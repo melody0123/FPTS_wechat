@@ -10,8 +10,7 @@ Page({
       username:'',
       password:'',
       validateCode:''
-    },
-    img:'http://47.108.114.204:8888/captcha/captchaImage?type=math&s=' + Math.random()
+    }
   },
   formInputChange(e){
   // console.log(e);
@@ -31,12 +30,13 @@ Page({
     }else {
       let _this=this 
       wx.request({
-        url: 'http://47.108.114.204:8888/login', //请求地址
+        url: 'http://localhost/login', //请求地址
         data: "username=" + _this.data.formData.username + "&password=" + _this.data.formData.password +
               "&validateCode=" + _this.data.formData.validateCode + "&rememberMe=false",//请求数据
         method: 'POST',//请求方法
         header: {
-          'content-type': 'application/x-www-form-urlencoded;charset=UTF-8' // 请求头
+          'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
+          'cookie': wx.getStorageSync('sessionId')
           // 'content-type': 'x-www-form-urlencoded'
         },
         success (res) {
@@ -67,9 +67,18 @@ Page({
    */
   onLoad(options) {
     wx.request({
-      url: 'http://47.108.114.204:8888/login',
+      url: 'http://localhost/login',
       method: 'GET'
-    })
+    });
+   wx.request({
+     url: 'http://localhost/captcha/captchaImage?type=math',
+     method: 'GET',
+     success (res) {
+       let sessionId = (res.header['Set-Cookie'].split('; '))[0];
+       console.log(sessionId);
+       wx.setStorageSync('sessionId', sessionId);
+     }
+   })
   },
  
  
