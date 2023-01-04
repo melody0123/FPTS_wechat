@@ -1,13 +1,13 @@
 {
   "pages":[
+    "pages/login/login",
     "pages/index/index",
     "pages/discovery/discovery",
     "pages/notify/notify",
     "pages/chat/chat",
     "pages/more/more",
     "pages/answer/answer",
-    "pages/question/question",
-    "pages/login/login"
+    "pages/question/question"
   ],
   "window":{
     "backgroundTextStyle":"light",

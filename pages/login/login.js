@@ -1,5 +1,11 @@
 // pages/login/login.js
 // pages/login/index.js
+import { btoa } from './loginUtils';
+const arrayBufferToBase64Img = (buffer) => {
+  const str = String.fromCharCode(...new Uint8Array(buffer));
+  return `data:image/jpeg;base64,${btoa(str)}`;
+}
+
 Page({
  
   /**
@@ -10,7 +16,8 @@ Page({
       username:'',
       password:'',
       validateCode:''
-    }
+    },
+    imgUrl: ''
   },
   formInputChange(e){
   // console.log(e);
@@ -41,7 +48,7 @@ Page({
         },
         success (res) {
            wx.setStorageSync('MyToken', res.data.token)
-           console.log("打印token:",res.data.token)
+           // console.log("打印token:",res.data.token)
               //登录成功
               wx.showModal({
               title: '提示',
@@ -66,6 +73,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    let that = this;
     wx.request({
       url: 'http://localhost/login',
       method: 'GET'
@@ -73,13 +81,20 @@ Page({
    wx.request({
      url: 'http://localhost/captcha/captchaImage?type=math',
      method: 'GET',
+     responseType: 'arraybuffer',
      success (res) {
+       // 记录 session
        let sessionId = (res.header['Set-Cookie'].split('; '))[0];
-       console.log(sessionId);
+       // console.log(sessionId);
        wx.setStorageSync('sessionId', sessionId);
+
+       // 显示验证码图片
+       let url = arrayBufferToBase64Img(res.data);
+       that.setData({
+        imgUrl : url,     //设置data里面的图片url
+        show:true
+       })
      }
    })
-  },
- 
- 
+  }
 })
