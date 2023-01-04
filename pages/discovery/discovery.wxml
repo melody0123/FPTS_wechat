@@ -7,44 +7,32 @@
 
 <scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
   <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
-    <swiper class="activity" indicator-dots="{{indicatorDots}}"
-            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{imgUrls}}">
-        <swiper-item>
-          <image src="{{item}}" class="slide-image" width="355" height="155"/>
-        </swiper-item>
-      </block>
-    </swiper>
+    
 
-    <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+    <block wx:for="{{aStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
       <view class="feed-item">
         <view class="feed-source">
           <a class="">
-            <view class="avatar">
-              <image src="{{item.feed_source_img}}"></image>
-            </view>
-            <text>{{item.feed_source_name}}</text>
+            <text>用户ID：{{item.userId}}</text>
           </a>
         </view>
         <view class="feed-content">
-          <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+          <view class="question"  bindtap="bindQueTap">
             <a class="question-link">
-              <text>{{item.question}}</text>
+              <text>产品ID：{{item.productId}}</text>
             </a>
           </view>
           <view class="answer-body">
             <view bindtap="bindItemTap">
-              <text class="answer-txt" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
+              <text class="answer-txt">产品价格：{{item.productPrice}}</text>
             </view>
             <view class="answer-actions" bindtap="bindItemTap">
               <view class="like dot">
-                <a>{{item.good_num}} 赞同 </a>
+                <a>产品数量：{{item.productAmount}}</a>
               </view>
               <view class="comments dot">
-                <a>{{item.comment_num}} 评论 </a>
-              </view>
-              <view class="follow-it">
-                <a>关注问题</a>
+                <a>产品种类：</a>
+                <a>{{tradingRecord.numToString(item.productType)}}</a>
               </view>
             </view>
           </view>
@@ -53,12 +41,118 @@
     </block>
   </view>
   <view class="ctnt1 placehold" hidden="{{currentNavtab==1 ? '' : true}}">
-    <text>圆桌</text>
+    <block wx:for="{{bStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <view class="feed-item">
+        <view class="feed-source">
+          <a class="">
+            <text>用户ID：{{item.userId}}</text>
+          </a>
+        </view>
+        <view class="feed-content">
+          <view class="question"  bindtap="bindQueTap">
+            <a class="question-link">
+              <text>产品ID：{{item.productId}}</text>
+            </a>
+          </view>
+          <view class="answer-body">
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">产品价格：{{item.productPrice}}</text>
+            </view>
+            <view class="answer-actions" bindtap="bindItemTap">
+              <view class="like dot">
+                <a>产品数量：{{item.productAmount}}</a>
+              </view>
+              <view class="comments dot">
+                <a>产品种类：</a>
+                <a>{{tradingRecord.numToString(item.productType)}}</a>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
   </view>
   <view class="ctnt2 placehold" hidden="{{currentNavtab==2 ? '' : true}}">
-    <text>热门</text>
+    <block wx:for="{{bond}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <view class="feed-item">
+        <view class="feed-source">
+          <a class="">
+            <text>用户ID：{{item.userId}}</text>
+          </a>
+        </view>
+        <view class="feed-content">
+          <view class="question"  bindtap="bindQueTap">
+            <a class="question-link">
+              <text>产品ID：{{item.productId}}</text>
+            </a>
+          </view>
+          <view class="answer-body">
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">产品价格：{{item.productPrice}}</text>
+            </view>
+            <view class="answer-actions" bindtap="bindItemTap">
+              <view class="like dot">
+                <a>产品数量：{{item.productAmount}}</a>
+              </view>
+              <view class="comments dot">
+                <a>产品种类：</a>
+                <a>{{tradingRecord.numToString(item.productType)}}</a>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
   </view>
   <view class="ctnt3 placehold" hidden="{{currentNavtab==3 ? '' : true}}">
-    <text>收藏</text>
+    <block wx:for="{{fund}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <view class="feed-item">
+        <view class="feed-source">
+          <a class="">
+            <text>用户ID：{{item.userId}}</text>
+          </a>
+        </view>
+        <view class="feed-content">
+          <view class="question"  bindtap="bindQueTap">
+            <a class="question-link">
+              <text>产品ID：{{item.productId}}</text>
+            </a>
+          </view>
+          <view class="answer-body">
+            <view bindtap="bindItemTap">
+              <text class="answer-txt">产品价格：{{item.productPrice}}</text>
+            </view>
+            <view class="answer-actions" bindtap="bindItemTap">
+              <view class="like dot">
+                <a>产品数量：{{item.productAmount}}</a>
+              </view>
+              <view class="comments dot">
+                <a>产品种类：</a>
+                <a>{{tradingRecord.numToString(item.productType)}}</a>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
   </view>
 </scroll-view>
+
+<wxs module="tradingRecord">
+  var numToString = function(array) {
+    if (array = "0"){
+      var productType = "A股";
+    }
+    else if (array = "1"){
+      var productType = "B股";
+    }
+    else if (array = "2"){
+      var productType = "债券";
+    }
+    else if (array = "3"){
+      var productType = "基金";
+    }
+    return productType;
+  }
+  module.exports.numToString = numToString;
+</wxs>

@@ -2,7 +2,12 @@
 var util = require('../../utils/util.js')
 Page({
   data: {
-    navTab: ["推荐", "圆桌", "热门", "收藏"],
+    userId: '',
+    aStock: [],
+    bStock: [],
+    bond: [],
+    fund: [],
+    navTab: ["A股", "B股", "债券", "基金"],
     currentNavtab: "0",
     imgUrls: [
       '../../images/24213.jpg',
@@ -16,16 +21,90 @@ Page({
     feed: [],
     feed_length: 0
   },
+
   onLoad: function () {
     console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    this.refresh();
+    var that = this;
+    wx.request({
+      url: 'http://localhost/record/transaction_record/searchTradingRecord',
+      data:{"userId": "1", "productType": "1"},
+      method: 'Post',  //方法分GET和POST，根据需要写
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
+        'cookie': wx.getStorageSync('sessionId')
+      },
+      success: (res) =>{
+        console.log(res)//调出来的数据在控制台显示，方便查看
+        if (that.data.currentNavtab=="0"){
+          that.setData({
+            aStock: res.data
+          })
+        }
+        else if (that.data.currentNavtab=="1"){
+          that.setData({
+            bStock: res.data
+          })
+        }
+        else if (that.data.currentNavtab=="2"){
+          that.setData({
+            bond: res.data
+          })
+        }
+        else if (that.data.currentNavtab=="3"){
+          that.setData({
+            fund: res.data
+          })
+        }
+      
+      },
+      fail: (res) =>{//这里写调用接口失败之后所运行的函数
+        console.log('.........fail..........');
+      }
+    }) 
   },
+
   switchTab: function(e){
     this.setData({
       currentNavtab: e.currentTarget.dataset.idx
     });
+    var currentNavtab = this.data.currentNavtab;
+    var that = this;
+    wx.request({
+      url: 'http://localhost/record/transaction_record/searchTradingRecord',
+      data:{"userId": "1", "productType": currentNavtab},
+      method: 'Post',  //方法分GET和POST，根据需要写
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
+        // 'content-type': 'x-www-form-urlencoded'
+        'cookie': wx.getStorageSync('sessionId')
+      },
+      success: (res) =>{
+        console.log("请求成功")//调出来的数据在控制台显示，方便查看
+        if (that.data.currentNavtab=="0"){
+          that.setData({
+            aStock: res.data
+          })
+        }
+        else if (that.data.currentNavtab=="1"){
+          that.setData({
+            bStock: res.data
+          })
+        }
+        else if (that.data.currentNavtab=="2"){
+          that.setData({
+            bond: res.data
+          })
+        }
+        else if (that.data.currentNavtab=="3"){
+          that.setData({
+            fund: res.data
+          })
+        }
+      },
+      fail: (res) =>{//这里写调用接口失败之后所运行的函数
+        console.log('.........fail..........');
+      }
+    }) 
   },
 
   bindItemTap: function() {
@@ -42,8 +121,11 @@ Page({
     wx.showNavigationBarLoading()
     this.refresh();
     console.log("upper");
-    setTimeout(function(){wx.hideNavigationBarLoading();wx.stopPullDownRefresh();}, 2000);
+    setTimeout(function(){
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();}, 2000);
   },
+
   lower: function (e) {
     wx.showNavigationBarLoading();
     var that = this;
