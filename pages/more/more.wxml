@@ -1,6 +1,6 @@
 
 <view class="container more">
-  <view class="user flex-wrp">
+  <view class="user flex-wrp" bindtap="loginFunc">
     <view class="avatar flex-item">
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     </view>
@@ -15,8 +15,8 @@
       <view class="myitem-icon flex-item" >
         <image src="../../images/eye.png"></image>
       </view>
-      <view class="myitem-name flex-item">
-        <text>我的关注</text>
+      <view class="myitem-name flex-item" bindtap="todolistFunc">
+        <text>我的待办事项</text>
       </view>
     </view>
     <view class="my-item flex-wrp">

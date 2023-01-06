@@ -12,6 +12,16 @@ Page({
       url: ''
     })
   },
+  loginFunc:function(){
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
+  },
+  todolistFunc:function(){
+    wx.navigateTo({
+      url: '/pages/todolist/todolist',
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this

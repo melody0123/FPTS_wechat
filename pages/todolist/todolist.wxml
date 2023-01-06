@@ -1,0 +1,37 @@
+<view class="top-tab flex-wrp flex-tab " >
+  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+    {{itemName}}
+  </view>
+</view>
+<scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">任务</view>
+      <view class="th">截止日期</view>
+      <view class="th">细节</view>
+      <view class="th">操作</view>
+    </view>
+    <block wx:for="{{list}}">
+      <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+        <view class="td" data-id='{{item.task}}' bindtap="todolistDetail">{{item.task}}</view>
+        <view class="td">{{item.endTime}}</view>
+        <view class="td">{{item.detail}}</view>
+        <view class="td">
+          <button type="primary" size="mini" bindtap='todolistEdit' data-id='{{item.id}}' data-task='{{item.task}}'>编辑</button>
+          <button type="warn" size="mini" bindtap='todolistDelete' data-id='{{item.id}}' data-task='{{item.task}}'>删除</button>
+        </view>
+        
+      </view>
+      <view class="tr" wx:else>
+        <view class="td">{{item.task}}</view>
+        <view class="td">{{item.endTime}}</view>
+        <view class="td">{{item.detail}}</view>
+        <view class="td">
+          <button type="primary" size="mini" bindtap='todolistEdit' data-id='{{item.id}}' data-task='{{item.task}}'>编辑</button>
+          <button type="warn" size="mini" bindtap='todolistDelete' data-id='{{item.id}}' data-task='{{item.task}}'>删除</button>
+        </view>
+      </view>
+    </block>
+  </view>
+  <button type = "primary" bindtap='todolistAdd'>添加待办事项</button>
+</scroll-view>

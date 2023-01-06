@@ -9,7 +9,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/login/login",
+          "pathName": "pages/discovery/discovery",
           "query": "",
           "launchMode": "default",
           "scene": null
