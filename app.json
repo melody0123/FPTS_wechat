@@ -18,7 +18,12 @@
     "pages/news/news",
     "pages/news/newsSource",
     "pages/notice/notice",
-    "pages/notice/noticeView"
+    "pages/notice/noticeView",
+    "pages/tradingRecord/tradingRecord",
+    "pages/accountAssets/accountAssets",
+    "pages/accountAssets/assetsEdit",
+    "pages/register/register",
+    "pages/textMessageLogin/textMessageLogin"
   ],
   "window": {
     "backgroundTextStyle": "light",
