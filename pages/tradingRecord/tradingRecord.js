@@ -1,32 +1,31 @@
 //discovery.js
+//answer.js
 var util = require('../../utils/util.js')
+
+var app = getApp()
 Page({
   data: {
-    userId: '',
-    aStock: [],
-    bStock: [],
-    bond: [],
-    fund: [],
-    navTab: ["A股", "B股", "债券", "基金"],
-    currentNavtab: "0",
-    imgUrls: [
-      '../../images/24213.jpg',
-      '../../images/24280.jpg',
-      '../../images/1444983318907-_DSC1826.jpg'
-    ],
-    indicatorDots: false,
-    autoplay: true,
-    interval: 5000,
-    duration: 1000,
-    feed: [],
-    feed_length: 0
+    orderId: wx.getStorageSync('orderId'),
+    productId: '',
+    productType: '',
+    productAmount: null,
+    productPrice: '',
+    orderDirection: '',
+    accountId: '',
+    orderTime: null
+  },
+  //事件处理函数
+  toQuestion: function() {
+    wx.navigateTo({
+      url: '../question/question'
+    })
   },
   onLoad: function () {
     console.log('onLoad')
-    var that = this;
+    var that = this
     wx.request({
-      url: 'http://localhost/record/transaction_record/searchTradingRecord',
-      data:{"userId": "1", "productType": "1"},
+      url: 'http://localhost/record/transaction_record/getById',
+      data:{orderId: wx.getStorageSync('orderId')},
       method: 'Post',  //方法分GET和POST，根据需要写
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
@@ -34,135 +33,25 @@ Page({
       },
       success: (res) =>{
         console.log(res);//调出来的数据在控制台显示，方便查看;
-        console.log(that.data.currentNavtab);
-        if (that.data.currentNavtab=="0"){
-          that.setData({
-            aStock: res.data
-          })
-        }
-        else if (that.data.currentNavtab=="1"){
-          that.setData({
-            bStock: res.data
-          })
-        }
-        else if (that.data.currentNavtab=="2"){
-          that.setData({
-            bond: res.data
-          })
-        }
-        else if (that.data.currentNavtab=="3"){
-          that.setData({
-            fund: res.data
-          })
-        }
-      
+        that.setData({
+          
+          accountId: res.data[0].accountId,
+          productId: res.data[0].productId,
+          productPrice: res.data[0].productPrice,
+          productAmount: res.data[0].productAmount,
+          productType: res.data[0].productType,
+          orderTime: res.data[0].orderTime,
+          orderDirection: res.data[0].orderdirection
+        })
       },
       fail: (res) =>{//这里写调用接口失败之后所运行的函数
         console.log('.........fail..........');
       }
     }) 
   },
-  switchTab: function(e){
-    this.setData({
-      currentNavtab: e.currentTarget.dataset.idx
-    });
-    var that = this;
-    var currentNavtab = that.data.currentNavtab;
-    
-    wx.request({
-      url: 'http://localhost/record/transaction_record/searchTradingRecord',
-      data:{"userId": "1", "productType": currentNavtab},
-      method: 'Post',  //方法分GET和POST，根据需要写
-      header: {
-        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
-        // 'content-type': 'x-www-form-urlencoded'
-        'cookie': wx.getStorageSync('sessionId')
-      },
-      success: (res) =>{
-        console.log("请求成功")//调出来的数据在控制台显示，方便查看
-        console.log(that.data.currentNavtab);
-        if (that.data.currentNavtab=="0"){
-          that.setData({
-            aStock: res.data
-          })
-        }
-        else if (that.data.currentNavtab=="1"){
-          that.setData({
-            bStock: res.data
-          })
-        }
-        else if (that.data.currentNavtab=="2"){
-          that.setData({
-            bond: res.data
-          })
-        }
-        else if (that.data.currentNavtab=="3"){
-          that.setData({
-            fund: res.data
-          })
-        }
-      },
-      fail: (res) =>{//这里写调用接口失败之后所运行的函数
-        console.log('.........fail..........');
-      }
-    }) 
-  },
-  bindItemTap: function() {
-    wx.navigateTo({
-      url: '../tradingRecord/tradingRecord'
-    })
-  },
-  bindQueTap: function() {
-    wx.navigateTo({
-      url: '../tradingRecord/tradingRecord'
-    })
-  },
-  upper: function () {
-    wx.showNavigationBarLoading()
-    this.refresh();
-    console.log("upper");
-    setTimeout(function(){
-      wx.hideNavigationBarLoading();
-      wx.stopPullDownRefresh();}, 2000);
-  },
-  lower: function (e) {
-    wx.showNavigationBarLoading();
-    var that = this;
-    setTimeout(function(){wx.hideNavigationBarLoading();that.nextLoad();}, 1000);
-    console.log("lower")
-  },
-  //scroll: function (e) {
-  //  console.log("scroll")
-  //},
-  //网络请求数据, 实现刷新
-  refresh0: function(){
-    var index_api = '';
-    util.getData(index_api)
-        .then(function(data){
-          //this.setData({
-          //
-          //});
-          console.log(data);
-        });
-  },
-  //使用本地 fake 数据实现刷新效果
-  refresh: function(){
-    var feed = util.getDiscovery();
-    console.log("loaddata");
-    var feed_data = feed.data;
-    this.setData({
-      feed:feed_data,
-      feed_length: feed_data.length
-    });
-  },
-  //使用本地 fake 数据实现继续加载效果
-  nextLoad: function(){
-    var next = util.discoveryNext();
-    console.log("continueload");
-    var next_data = next.data;
-    this.setData({
-      feed: this.data.feed.concat(next_data),
-      feed_length: this.data.feed_length + next_data.length
-    });
+  tapName: function(event){
+    console.log(event)
   }
-});
+})
+
+

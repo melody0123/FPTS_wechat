@@ -14,7 +14,8 @@
     "pages/financeQuery/financeQuery",
     "pages/financeQuery/detail",
     "pages/financeWarehouse/financeWarehouse",
-    "pages/financeWarehouse/warehouseEdit"
+    "pages/financeWarehouse/warehouseEdit",
+    "pages/tradingRecord/tradingRecord"
   ],
   "window": {
     "backgroundTextStyle": "light",

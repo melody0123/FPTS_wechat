@@ -7,6 +7,7 @@ Page({
     bStock: [],
     bond: [],
     fund: [],
+    
     navTab: ["A股", "B股", "债券", "基金"],
     currentNavtab: "0",
     imgUrls: [
@@ -27,7 +28,7 @@ Page({
     var that = this;
     wx.request({
       url: 'http://localhost/record/transaction_record/searchTradingRecord',
-      data:{"userId": "1", "productType": "1"},
+      data:{userId: "1", productType: "0"},
       method: 'Post',  //方法分GET和POST，根据需要写
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
@@ -71,7 +72,7 @@ Page({
     var that = this;
     wx.request({
       url: 'http://localhost/record/transaction_record/searchTradingRecord',
-      data:{"userId": "1", "productType": currentNavtab},
+      data:{userId: "1", productType: currentNavtab},
       method: 'Post',  //方法分GET和POST，根据需要写
       header: {
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
@@ -107,14 +108,16 @@ Page({
     }) 
   },
 
-  bindItemTap: function() {
+  bindItemTap: function(e) {
+    wx.setStorageSync('orderId', e.currentTarget.orderId);
     wx.navigateTo({
-      url: '../answer/answer'
+      url: '../tradingRecord/tradingRecord'
     })
   },
-  bindQueTap: function() {
+  bindQueTap: function(e) {
+    wx.setStorageSync('orderId', e.currentTarget.orderId);
     wx.navigateTo({
-      url: '../question/question'
+      url: '../tradingRecord/tradingRecord'
     })
   },
   upper: function () {

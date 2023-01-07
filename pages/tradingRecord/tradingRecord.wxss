@@ -83,9 +83,9 @@
   background: #ffffff;
 }
 .answer-content text{
-  font-size: 32rpx;
+  font-size: 45rpx;
   color: #454545;
-  line-height: 44rpx;
+  line-height: 60rpx;
 }
 .answer-content image{
   width: 100%;
