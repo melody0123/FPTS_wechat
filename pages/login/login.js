@@ -1,6 +1,6 @@
 // pages/login/login.js
 // pages/login/index.js
-import { btoa } from './loginUtils';
+import { btoa } from '../../utils/imageUtils';
 const arrayBufferToBase64Img = (buffer) => {
   const str = String.fromCharCode(...new Uint8Array(buffer));
   return `data:image/jpeg;base64,${btoa(str)}`;
