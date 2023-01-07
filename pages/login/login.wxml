@@ -1,17 +1,19 @@
 <!--pages/login/login.wxml-->
-<view class="container">
-  <image src="../../images/LoginBackground.jpg"></image>
+<view class="content">
+  <image class="background" src="../../images/LoginBackground.jpg"></image>
+  <text class="h1">用户登录</text>
+  <form class="loginBox" bindsubmit="loginFun">
+    <view class="section">
+        <input name="username" placeholder="请输入账号" value="admin" placeholder-style="color: white"/>
+    </view>
+    <view class="section">
+        <input name="password" password="true" placeholder="请输入密码" value="admin123" placeholder-style="color: white"/>
+    </view>
+    <view class="validateCodeSection">
+        <input name="validateCode" placeholder="请输入验证码" placeholder-style="color: white"/>
+        <image src="{{imgUrl}}"/>
+    </view>
+    <button form-type="submit">登录</button>
+  </form>
 </view>
-<view style="position: relative; left: 0rpx; top: 258rpx">
-  <view class="section">
-      <input bindinput="setUsername" placeholder="请输入账号" placeholder-style="color: white"/>
-  </view>
-  <view class="section" style="width: 750rpx; height: 94rpx; display: block; box-sizing: border-box">
-      <input bindinput="setPassword" password="true" placeholder="请输入密码" placeholder-style="color: white"/>
-  </view>
-  <view class="section" style="width: 750rpx; height: 94rpx; display: block; box-sizing: border-box">
-      <input bindinput="setValidateCode" placeholder="请输入验证码" placeholder-style="color: white"/>
-      <image src="{{imgUrl}}" style="width: 80px; height: 40px; position: relative; left: 450rpx; top: -94rpx"/>
-  </view>
-  <button type="primary" bindtap="loginFun" style="width: 308rpx; height: 94rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">登录</button>
-</view>
+
