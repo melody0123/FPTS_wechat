@@ -25,7 +25,8 @@ input
   height: 40px; 
   position: relative; 
   left: 450rpx; 
-  top: -94rpx
+  top: -94rpx;
+  z-index: 2;
 }
 
 .section

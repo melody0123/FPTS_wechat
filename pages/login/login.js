@@ -105,6 +105,27 @@ Page({
       url: '/pages/textMessageLogin/textMessageLogin',
     })
   },
+
+  // 刷新验证码
+  refreshValidateCode: function() {
+    let that = this;
+    wx.request({
+      url: "http://localhost/captcha/captchaImage?type=math&s=" + Math.random(),
+      method: 'GET',
+      responseType: 'arraybuffer',
+      header: {
+        'cookie': wx.getStorageSync('sessionId') // 取 session
+      },
+      success: function(res) {
+        // 显示验证码图片
+       let url = arrayBufferToBase64Img(res.data);
+       that.setData({
+        imgUrl : url,     //设置data里面的图片url
+        show:true
+       })
+      }
+    })
+  },
  
   /**
    * 生命周期函数--监听页面加载
