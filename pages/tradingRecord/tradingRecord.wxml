@@ -1,0 +1,29 @@
+<!--pages/tradingRecord/tradingRecord.wxml-->
+<view class="container">
+    <view class="question" bindtap="toQuestion">
+        <text class="question-title">订单号</text>
+    </view>
+    <view class="answerer-wrp">
+        <view class="bg-half"></view>
+        <view class="answerer flex-wrp">
+            <view class="avatar flex-item">
+                <image src="../../images/icon1.jpeg"></image>
+            </view>
+            <view class="answerer-info flex-item">
+                <text class="answerer-name">Rebecca</text>
+                <text class="answerer-des">WEB前端*不靠谱天气预报员*想做代码小仙女</text>
+            </view>
+            <view class="follow flex-item">
+                <text>十 关注</text>
+            </view>
+        </view>
+    </view>
+    <view class="answer-content">
+        <text>
+            若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle
+            看到描述最后一段，感觉有骗答案的嫌疑
+        </text>
+
+    </view>
+    
+</view>
