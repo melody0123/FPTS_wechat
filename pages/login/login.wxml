@@ -13,8 +13,11 @@
         <input name="validateCode" placeholder="请输入验证码" placeholder-style="color: white"/>
         <image src="{{imgUrl}}"/>
     </view>
-    <button form-type="submit" style="position: relative; left: 0rpx; top: -38rpx">登录</button>
+    <button class="loginButton" form-type="submit">登录</button>
   </form>
-    <text class="registerBox" style="position: relative; left: 0rpx; top: 293rpx">没有账号？</text>
+    <text class="bottomText" style="left: 113rpx; top: 331rpx">没有账号？</text>
+    <button class="registerButton">立即注册</button>
+    <text class="bottomText" style="left: 113rpx; top: 106rpx">或者</text>
+    <button class="textMessageLoginButton">短信验证码登录</button>
 </view>
 
