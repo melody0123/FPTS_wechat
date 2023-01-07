@@ -16,8 +16,8 @@
     <button class="loginButton" form-type="submit">登录</button>
   </form>
     <text class="bottomText" style="left: 113rpx; top: 331rpx">没有账号？</text>
-    <button class="registerButton">立即注册</button>
+    <button class="registerButton" bindtap="toRegisterPage">立即注册</button>
     <text class="bottomText" style="left: 113rpx; top: 106rpx">或者</text>
-    <button class="textMessageLoginButton">短信验证码登录</button>
+    <button class="textMessageLoginButton" bindtap="toTextMessageLoginPage">短信验证码登录</button>
 </view>
 
