@@ -22,6 +22,11 @@ Page({
       url: '/pages/todolist/todolist',
     })
   },
+  financeQueryFunc:function(){
+    wx.navigateTo({
+      url: '/pages/financeQuery/financeQuery',
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this

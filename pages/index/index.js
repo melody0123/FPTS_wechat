@@ -15,7 +15,7 @@ Page({
   },
   bindQueTap: function() {
     wx.navigateTo({
-      url: '../question/question'
+      url: '../financeQuery/financeQuery'
     })
   },
   onLoad: function () {

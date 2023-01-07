@@ -10,7 +10,9 @@
     "pages/question/question",
     "pages/todolist/todolist",
     "pages/todolist/todolistEdit",
-    "pages/todolist/todolistAdd"
+    "pages/todolist/todolistAdd",
+    "pages/financeQuery/financeQuery",
+    "pages/financeQuery/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
