@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
  
   /**
@@ -70,7 +71,7 @@ Page({
     var id = app.globalData.todolistId;
     var that=this;
     wx.request({
-      url: 'http://localhost/todo/list/wxEdit/' + id,
+      url: 'http://' + app.globalData.serverIP + '/todo/list/wxEdit/' + id,
       method:'POST',
       data:{},
       header:{
@@ -102,7 +103,7 @@ Page({
     console.log(that.data.todolist);
     console.log(that.data.information);
     wx.request({
-      url: 'http://localhost/todo/list/edit',
+      url: 'http://' + app.globalData.serverIP + '/todo/list/edit',
       method:'POST',
       data:{
         id:id,

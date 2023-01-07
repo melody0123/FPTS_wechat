@@ -1,6 +1,6 @@
-var util = require('../../utils/util.js')
-var app = getApp()
-import { btoa } from '../../utils/imageUtils';
+var util = require('../../utils/util.js');
+var app = getApp();
+import { btoa } from '../../utils/imageUtils.js';
 const arrayBufferToBase64Img = (buffer) => {
   const str = String.fromCharCode(...new Uint8Array(buffer));
   return `data:image/jpeg;base64,${btoa(str)}`;
@@ -9,10 +9,8 @@ const arrayBufferToBase64Img = (buffer) => {
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {
-      avatarUrl: "",
-      nickName: ""
-    }
+    avatarUrl: '',
+    nickName: ''
   },
   //事件处理函数
   bindViewTap: function () {
@@ -98,25 +96,47 @@ Page({
   onLoad: function () {
     console.log('onLoad')
     let that = this;
-    // 尝试获取用户头像和昵称
+
+    // 尝试获取用户头像
     wx.request({
-      url: 'http://localhost/img/profile.jpg',
+      url: 'http://' + app.globalData.serverIP + '/img/profile.jpg',
       method: "GET",
       responseType: 'arraybuffer',
       header: {
         cookie: wx.getStorageSync('sessionId')
       },
       success: function(res) {
-        // 显示验证码图片
-       let url = arrayBufferToBase64Img(res.data);
-       that.setData({
-        userInfo: {
-          avatarUrl: url,
-          show:true,
-          nickName: ""
-        }
-       })
+        // 获取成功，显示头像图片
+        // console.log(res.data);
+        let avatar = arrayBufferToBase64Img(res.data);
+        that.setData({
+          avatarUrl: avatar,
+          show: true
+        })
+        // console.log(that.data.avatarUrl);
+      },
+      fail: function() {
+        // 获取失败，设置成默认的
+        app.getUserInfo(function(userInfo){
+          that.setData({
+            avatarUrl: userInfo.avatarUrl
+          })
+        });
       }
-    })
+    });
+
+    // 获取用户loginName
+    let loginName = app.globalData.sysUserInfo.userName;
+    if (loginName) {
+      // 获取成功
+      this.setData({
+        nickName: loginName
+      });
+    } else {
+      // 获取失败
+      this.setData({
+        nickName: '请登录'
+      });
+    }
   }
 })

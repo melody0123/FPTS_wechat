@@ -26,6 +26,7 @@ App({
   },
   globalData:{
     userInfo:null,
+    sysUserInfo:null,
     todolistId:null,
     newsSourceLink:null,
     serverIP:"localhost",

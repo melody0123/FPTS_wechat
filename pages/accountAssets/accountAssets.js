@@ -1,4 +1,5 @@
 // pages/todolist/todolist.js
+var app = getApp();
 Page({
 
   /**
@@ -14,7 +15,7 @@ Page({
   onLoad(options) {
     var that=this;
     wx.request({
-      url: 'http://localhost/assets/account_assets/getByNo',
+      url: 'http://' + app.globalData.serverIP + '/assets/account_assets/getById',
       method:'POST',
       data:{userId: '', accountId: ''},
       header:{

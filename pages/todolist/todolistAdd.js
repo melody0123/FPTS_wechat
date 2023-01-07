@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
  
   /**
@@ -67,7 +68,7 @@ Page({
     var that=this;
     console.log(that.data.information);
     wx.request({
-      url: 'http://localhost/todo/list/add',
+      url: 'http://' + app.globalData.serverIP + '/todo/list/add',
       method:'POST',
       data:{
         task:that.data.information.task,

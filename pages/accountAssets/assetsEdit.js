@@ -1,4 +1,5 @@
 // pages/accountAssets/assetsEdit.js
+var app = getApp();
 Page({
  
   /**
@@ -67,7 +68,7 @@ Page({
     var accountId = wx.getStorageSync('accontId');
     var flag = wx.getStorageSync('flag');
     wx.request({
-      url: 'http://localhost/assets/account_assets/getByNo',
+      url: 'http://' + app.globalData.serverIP + '/assets/account_assets/getById',
       method:'POST',
       data:{userId: userId, accountId: accountId},
       header:{
@@ -86,7 +87,7 @@ Page({
     var that=this;
     if (that.data.flag){
       wx.request({
-        url: 'http://localhost/assets/account_assets/increase',
+        url: 'http://' + app.globalData.serverIP + '/assets/account_assets/increase',
         method:'POST',
         data:{
           userId: that.data.userId,
@@ -117,7 +118,7 @@ Page({
     else{
       if (that.data.balance >= that.data.changeBalance){
         wx.request({
-          url: 'http://localhost/assets/account_assets/decrease',
+          url: 'http://' + app.globalData.serverIP + '/assets/account_assets/decrease',
           method:'POST',
           data:{
             userId: that.data.userId,

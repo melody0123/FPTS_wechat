@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
  
   /**
@@ -70,7 +71,7 @@ Page({
     console.log(id);
     var that=this;
     wx.request({
-      url: 'http://localhost/finance_query/finance_query/wxEdit/' + id,
+      url: 'http://' + app.globalData.serverIP + '/finance_query/finance_query/wxEdit/' + id,
       method:'POST',
       data:{},
       header:{
@@ -102,7 +103,7 @@ Page({
     console.log(that.data.financelist);
     console.log(that.data.information);
     wx.request({
-      url: 'http://localhost/finance_query/finance_query/edit',
+      url: 'http://' + app.globalData.serverIP + '/finance_query/finance_query/edit',
       method:'POST',
       data:{
         id:id,

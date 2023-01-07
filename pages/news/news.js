@@ -112,7 +112,7 @@ Page({
     var that=this;
     console.log(wx.getStorageSync('sessionId'));
     wx.request({
-      url: 'http://localhost/finance_news/news_manage/wxGetNews',
+      url: 'http://' + app.globalData.serverIP + '/finance_news/news_manage/wxGetNews',
       method:'GET',
       data:{},
       header:{

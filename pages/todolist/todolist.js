@@ -1,4 +1,5 @@
 // pages/todolist/todolist.js
+var app = getApp();
 Page({
 
   /**
@@ -23,7 +24,7 @@ Page({
     console.log(wx.getStorageSync('sessionId'));
     console.log(currentNavtab);
     wx.request({
-      url: 'http://localhost/todo/list/wxGet/' + currentNavtab,
+      url: 'http://' + app.globalData.serverIP + '/todo/list/wxGet/' + currentNavtab,
       method:'POST',
       data:{},
       header:{
@@ -76,7 +77,7 @@ Page({
       success:function(sm){ 
         if(sm.confirm){
           wx.request({
-            url: 'http://localhost/todo/list/remove',
+            url: 'http://' + app.globalData.serverIP + '/todo/list/remove',
             method:'POST',
             data:{
               ids: e.target.dataset.id,

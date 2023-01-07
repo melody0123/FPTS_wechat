@@ -1,4 +1,5 @@
 // pages/financeQuery/financeQuery.js
+var app = getApp();
 Page({
 
   /**
@@ -23,7 +24,7 @@ Page({
     console.log(wx.getStorageSync('sessionId'));
     console.log(currentNavtab);
     wx.request({
-      url: 'http://localhost/finance_query/finance_query/wxGet/' + currentNavtab,
+      url: 'http://' + app.globalData.serverIP + '/finance_query/finance_query/wxGet/' + currentNavtab,
       method:'POST',
       data:{},
       header:{

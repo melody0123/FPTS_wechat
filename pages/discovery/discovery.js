@@ -1,4 +1,5 @@
 //discovery.js
+var app = getApp();
 var util = require('../../utils/util.js')
 Page({
   data: {
@@ -27,7 +28,7 @@ Page({
     console.log('onLoad')
     var that = this;
     wx.request({
-      url: 'http://localhost/record/transaction_record/searchTradingRecord',
+      url: 'http://' + app.globalData.serverIP + '/record/transaction_record/searchTradingRecord',
       data:{userId: "1", productType: "0"},
       method: 'Post',  //方法分GET和POST，根据需要写
       header: {
@@ -71,7 +72,7 @@ Page({
     var currentNavtab = this.data.currentNavtab;
     var that = this;
     wx.request({
-      url: 'http://localhost/record/transaction_record/searchTradingRecord',
+      url: 'http://' + app.globalData.serverIP + '/record/transaction_record/searchTradingRecord',
       data:{userId: "1", productType: currentNavtab},
       method: 'Post',  //方法分GET和POST，根据需要写
       header: {

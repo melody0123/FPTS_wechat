@@ -1,4 +1,5 @@
 // pages/financeWarehouse/financeWarehouse.js
+var app = getApp();
 Page({
 
   /**
@@ -23,7 +24,7 @@ Page({
     console.log(wx.getStorageSync('sessionId'));
     console.log(currentNavtab);
     wx.request({
-      url: 'http://localhost/finance_warehouse/finance_warehouse/wxGet/' + currentNavtab,
+      url: 'http://' + app.globalData.serverIP + '/finance_warehouse/finance_warehouse/wxGet/' + currentNavtab,
       method:'POST',
       data:{},
       header:{

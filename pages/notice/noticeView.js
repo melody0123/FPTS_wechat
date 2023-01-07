@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
 
   /**
@@ -17,7 +18,7 @@ Page({
     var id = app.globalData.noticeId;
     var that = this;
     wx.request({
-      url: 'http://localhost/system/notice/wxView/' + id,
+      url: 'http://' + app.globalData.serverIP + '/system/notice/wxView/' + id,
       method: 'POST',
       data: {},
       header: {

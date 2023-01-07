@@ -1,5 +1,6 @@
 // pages/login/login.js
 // pages/login/index.js
+var app = getApp();
 import { btoa } from '../../utils/imageUtils';
 const arrayBufferToBase64Img = (buffer) => {
   const str = String.fromCharCode(...new Uint8Array(buffer));
@@ -36,7 +37,7 @@ Page({
       // 填写完整，向服务器发送登录请求
       let that = this;
       wx.request({
-        url: 'http://localhost/login', //请求地址
+        url: 'http://' + app.globalData.serverIP + '/login', //请求地址
         data: {username: that.data.username, password: that.data.password, validateCode: that.data.validateCode, rememberMe: "false"}, //请求数据
         method: 'POST', //请求方法
         header: {
@@ -58,7 +59,22 @@ Page({
                   url: '/pages/news/news',
                 })
               }
-            })
+            });
+            // 顺便获取用户详细信息
+            wx.request({
+              url: 'http://' + app.globalData.serverIP + '/system/user/getUserInfo',
+              method: 'POST',
+              header: {
+                'cookie': wx.getStorageSync('sessionId'),
+                'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+              },
+              data: {
+                'loginName': that.data.username
+              },
+              success: function(res) {
+                app.globalData.sysUserInfo = res.data; // 存入全局变量
+              }
+            });
           } else if (res.statusCode == 200 && res.data.code == 500) {
             // 登录失败
             // console.log("登录失败，" + res.data.msg);
@@ -110,7 +126,7 @@ Page({
   refreshValidateCode: function() {
     let that = this;
     wx.request({
-      url: "http://localhost/captcha/captchaImage?type=math&s=" + Math.random(),
+      url: 'http://' + app.globalData.serverIP + '/captcha/captchaImage?type=math&s=' + Math.random(),
       method: 'GET',
       responseType: 'arraybuffer',
       header: {
@@ -133,11 +149,11 @@ Page({
   onLoad: function(options) {
     let that = this;
     wx.request({
-      url: 'http://localhost/login',
+      url: 'http://' + app.globalData.serverIP + '/login',
       method: 'GET'
     });
    wx.request({
-     url: 'http://localhost/captcha/captchaImage?type=math',
+     url: 'http://' + app.globalData.serverIP + '/captcha/captchaImage?type=math',
      method: 'GET',
      responseType: 'arraybuffer',
      success: function(res) {

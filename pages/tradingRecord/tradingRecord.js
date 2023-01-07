@@ -24,7 +24,7 @@ Page({
     console.log('onLoad')
     var that = this
     wx.request({
-      url: 'http://localhost/record/transaction_record/getById',
+      url: 'http://' + app.globalData.serverIP + '/record/transaction_record/getById',
       data:{orderId: wx.getStorageSync('orderId')},
       method: 'Post',  //方法分GET和POST，根据需要写
       header: {
