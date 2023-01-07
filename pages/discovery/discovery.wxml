@@ -7,63 +7,60 @@
 
 <scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
   <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
-    
-
     <block wx:for="{{aStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-      <view class="feed-item">
+      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'>
         <view class="feed-source">
           <a class="">
             <text>用户ID：{{item.userId}}</text>
           </a>
         </view>
         <view class="feed-content">
-          <view class="question"  bindtap="bindQueTap" orderId="{{item.orderId}}">
+          <view class="question">
             <a class="question-link">
               <text>产品ID：{{item.productId}}</text>
             </a>
           </view>
           <view class="answer-body">
             <view bindtap="bindItemTap">
-              <text class="answer-txt">产品价格：{{item.productPrice}}</text>
+              <text class="answer-txt">交易方向：{{tradingRecord.numToString(orderDirection)}}</text>
             </view>
-            <view class="answer-actions" bindtap="bindQueTap" orderId="{{item.orderId}}">
+            <view class="answer-actions">
               <view class="like dot">
                 <a>产品数量：{{item.productAmount}}</a>
               </view>
               <view class="comments dot">
-                <a>产品种类：A股</a>
+                <a>产品价格：{{item.productPrice}}</a>
               </view>
             </view>
           </view>
-          
         </view>
       </view>
     </block>
   </view>
   <view class="ctnt1 placehold" hidden="{{currentNavtab==1 ? '' : true}}">
     <block wx:for="{{bStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-      <view class="feed-item">n
+      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'>
         <view class="feed-source">
           <a class="">
             <text>用户ID：{{item.userId}}</text>
           </a>
         </view>
         <view class="feed-content">
-          <view class="question"  bindtap="bindQueTap" orderId="{{item.orderId}}">
+          <view class="question">
             <a class="question-link">
               <text>产品ID：{{item.productId}}</text>
             </a>
           </view>
           <view class="answer-body">
             <view bindtap="bindItemTap">
-              <text class="answer-txt">产品价格：{{item.productPrice}}</text>
+              <text class="answer-txt">交易方向：{{tradingRecord.numToString(orderDirection)}}</text>
             </view>
-            <view class="answer-actions" bindtap="bindItemTap" orderId="{{item.orderId}}">
+            <view class="answer-actions">
               <view class="like dot">
                 <a>产品数量：{{item.productAmount}}</a>
               </view>
               <view class="comments dot">
-                <a>产品种类：B股</a>
+                <a>产品价格：{{item.productPrice}}</a>
               </view>
             </view>
           </view>
@@ -71,30 +68,30 @@
       </view>
     </block>
   </view>
-  <view class="ctnt2 placehold" hidden="{{currentNavtab==2 ? '' : true}}">
-    <block wx:for="{{bond}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-      <view class="feed-item">
+  <view class="ctnt2 placehold" hidden="{{currentNavtab==2 ? '' : true}}" >
+    <block wx:for="{{bond}}" wx:for-index="idx" wx:for-item="item">
+      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'>
         <view class="feed-source">
           <a class="">
             <text>用户ID：{{item.userId}}</text>
           </a>
         </view>
         <view class="feed-content">
-          <view class="question"  bindtap="bindQueTap" orderId="{{item.orderId}}">
+          <view class="question">
             <a class="question-link">
               <text>产品ID：{{item.productId}}</text>
             </a>
           </view>
           <view class="answer-body">
             <view bindtap="bindItemTap">
-              <text class="answer-txt">产品价格：{{item.productPrice}}</text>
+              <text class="answer-txt">交易方向：{{tradingRecord.numToString(orderDirection)}}</text>
             </view>
-            <view class="answer-actions" bindtap="bindItemTap" orderId="{{item.orderId}}">
+            <view class="answer-actions">
               <view class="like dot">
                 <a>产品数量：{{item.productAmount}}</a>
               </view>
               <view class="comments dot">
-                <a>产品种类：债券</a>
+                <a>产品价格：{{item.productPrice}}</a>
               </view>
             </view>
           </view>
@@ -103,29 +100,29 @@
     </block>
   </view>
   <view class="ctnt3 placehold" hidden="{{currentNavtab==3 ? '' : true}}">
-    <block wx:for="{{fund}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-      <view class="feed-item">
+    <block wx:for="{{fund}}" wx:for-index="idx" wx:for-item="item">
+      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'>
         <view class="feed-source">
           <a class="">
             <text>用户ID：{{item.userId}}</text>
           </a>
         </view>
         <view class="feed-content">
-          <view class="question"  bindtap="bindQueTap" orderId="{{item.orderId}}">
+          <view class="question">
             <a class="question-link">
               <text>产品ID：{{item.productId}}</text>
             </a>
           </view>
           <view class="answer-body">
             <view bindtap="bindItemTap">
-              <text class="answer-txt">产品价格：{{item.productPrice}}</text>
+              <text class="answer-txt">交易方向：{{tradingRecord.numToString(orderDirection)}}</text>
             </view>
-            <view class="answer-actions" bindtap="bindItemTap" orderId="{{item.orderId}}">
+            <view class="answer-actions">
               <view class="like dot">
                 <a>产品数量：{{item.productAmount}}</a>
               </view>
               <view class="comments dot">
-                <a>产品种类：基金</a>
+                <a>产品价格：{{item.productPrice}}</a>
               </view>
             </view>
           </view>
@@ -135,19 +132,14 @@
   </view>
 </scroll-view>
 
+
 <wxs module="tradingRecord">
   var numToString = function(array) {
     if (array = "0"){
-      var productType = "A股";
+      var productType = "买入";
     }
     else if (array = "1"){
-      var productType = "B股";
-    }
-    else if (array = "2"){
-      var productType = "债券";
-    }
-    else if (array = "3"){
-      var productType = "基金";
+      var productType = "卖出";
     }
     return productType;
   }

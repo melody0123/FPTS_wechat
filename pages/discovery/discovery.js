@@ -56,7 +56,7 @@ Page({
             fund: res.data
           })
         }
-      
+        console.log(that.data.aStock);
       },
       fail: (res) =>{//这里写调用接口失败之后所运行的函数
         console.log('.........fail..........');
@@ -109,17 +109,13 @@ Page({
   },
 
   bindItemTap: function(e) {
-    wx.setStorageSync('orderId', e.currentTarget.orderId);
+    console.log(e.currentTarget.dataset);
+    wx.setStorageSync('orderId', e.currentTarget.dataset.orderid);
     wx.navigateTo({
       url: '../tradingRecord/tradingRecord'
     })
   },
-  bindQueTap: function(e) {
-    wx.setStorageSync('orderId', e.currentTarget.orderId);
-    wx.navigateTo({
-      url: '../tradingRecord/tradingRecord'
-    })
-  },
+ 
   upper: function () {
     wx.showNavigationBarLoading()
     this.refresh();

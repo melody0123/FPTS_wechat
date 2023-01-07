@@ -16,7 +16,8 @@
     "pages/financeWarehouse/financeWarehouse",
     "pages/financeWarehouse/warehouseEdit",
     "pages/news/news",
-    "pages/news/newsSource"
+    "pages/news/newsSource",
+    "pages/tradingRecord/tradingRecord"
   ],
   "window": {
     "backgroundTextStyle": "light",
