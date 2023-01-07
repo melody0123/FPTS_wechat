@@ -60,6 +60,7 @@ Page({
     })
   },
   onLoad: function (options) {
+    console.log(123);
     this.showFinanceList();
     console.log(this.financelist);
   },
@@ -106,10 +107,9 @@ Page({
       method:'POST',
       data:{
         id:id,
-        task:that.data.information.task,
-        endTime:that.data.information.endTime,
-        state:that.data.todolist.state,
-        detail:that.data.information.detail,
+        productId:that.data.financelist.productId,
+        newPrice:that.data.financelist.newPrice,
+        openPrice:that.data.financelist.openPrice,
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头

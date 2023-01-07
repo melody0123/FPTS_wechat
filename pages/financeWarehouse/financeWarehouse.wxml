@@ -17,8 +17,8 @@
         <view class="td">{{item.name}}</view>
         <view class="td">{{item.newPrice}}</view>
         <view class="td">
-          <button type="primary" size="mini" bindtap='showDetail' data-id='{{item.id}}' data-pId='{{item.productId}}'>详细</button>
-          <button type="warn" size="mini" bindtap='' data-id='{{item.id}}' data-task='{{item.productId}}'>买入</button>
+          <button type="primary" size="mini" bindtap='warehouseEdit' data-id='{{item.id}}' data-pId='{{item.productId}}'>修改</button>
+          <button type="warn" size="mini" bindtap='warehouseEdit' data-id='{{item.id}}' data-task='{{item.productId}}'>删除</button>
         </view>
         
       </view>
@@ -27,8 +27,8 @@
         <view class="td">{{item.name}}</view>
         <view class="td">{{item.newPrice}}</view>
         <view class="td">
-          <button type="primary" size="mini" bindtap='showDetail' data-id='{{item.id}}' data-pId='{{item.productId}}'>详细</button>
-          <button type="warn" size="mini" bindtap='' data-id='{{item.id}}' data-task='{{item.productId}}'>买入</button>
+          <button type="primary" size="mini" bindtap='warehouseEdit' data-id='{{item.id}}' data-pId='{{item.productId}}'>修改</button>
+          <button type="warn" size="mini" bindtap='warehouseEdit' data-id='{{item.id}}' data-task='{{item.productId}}'>删除</button>
         </view>
       </view>
     </block>

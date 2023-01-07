@@ -1,6 +1,6 @@
-<!--pages/financeQuery/detail.wxml-->
+<!--pages/financeWarehouse/warehouseEdit.wxml-->
 <view class='baseInfo'>
-  <text>产品详细信息</text>
+  <text>产品信息修改</text>
 </view>
  
 <form bindsubmit="formSubmit">

@@ -1,4 +1,4 @@
-// pages/financeQuery/financeQuery.js
+// pages/financeWarehouse/financeWarehouse.js
 Page({
 
   /**
@@ -23,7 +23,7 @@ Page({
     console.log(wx.getStorageSync('sessionId'));
     console.log(currentNavtab);
     wx.request({
-      url: 'http://localhost/finance_query/finance_query/wxGet/' + currentNavtab,
+      url: 'http://localhost/finance_warehouse/finance_warehouse/wxGet/' + currentNavtab,
       method:'POST',
       data:{},
       header:{
@@ -60,12 +60,12 @@ Page({
     
   },
 
-  showDetail: function(e){
+  warehouseEdit: function(e){
     var app = getApp();
     app.globalData.financelistId = e.currentTarget.dataset.id;
-    //console.log(app.globalData.financelistId);
+    console.log(app.globalData.financelistId);
     wx.navigateTo({
-      url: '/pages/financeQuery/detail',
+      url: '/pages/financeWarehouse/warehosueEdit',
     })
   },
   /**
