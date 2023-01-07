@@ -13,16 +13,39 @@
         </view>
     </view>
     <view class="answer-content">
-        <text>
-            产品ID：{{productId}}
+        <text decode="{{true}}">
+            产品ID：&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    {{productId}}                      
 
-            产品价格：{{productPrice}}
+            产品价格：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{productPrice}}元                                        
 
-            产品数量：{{productAmount}}
+            产品数量： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{productAmount}}                        
             
-            交易方向：{{orderDirection}}
+            交易方向：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      {{tradingRecord.numToString(orderDirection)}}
+
+
+
+
+
+
+
+
+
+
+
         </text>
 
     </view>
     
 </view>
+<wxs module="tradingRecord">
+  var numToString = function(array) {
+    if (array = "0"){
+      var productType = "买入";
+    }
+    else if (array = "1"){
+      var productType = "卖出";
+    }
+    return productType;
+  }
+  module.exports.numToString = numToString;
+</wxs>

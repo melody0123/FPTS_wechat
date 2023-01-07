@@ -17,7 +17,7 @@ Page({
   //事件处理函数
   toQuestion: function() {
     wx.navigateTo({
-      url: '../question/question'
+      url: '../discovery/discovery'
     })
   },
   onLoad: function () {
@@ -41,7 +41,7 @@ Page({
           productAmount: res.data[0].productAmount,
           productType: res.data[0].productType,
           orderTime: res.data[0].orderTime,
-          orderDirection: res.data[0].orderdirection
+          orderDirection: res.data[0].orderDirection
         })
       },
       fail: (res) =>{//这里写调用接口失败之后所运行的函数

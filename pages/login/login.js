@@ -16,6 +16,8 @@ Page({
     validateCode:'',
     imgUrl: ''
   },
+
+  // 登录函数
   loginFun: function(e) {
     // console.log(e.detail.value);
     // 读取一边用户输入的数据
@@ -88,6 +90,20 @@ Page({
         }
       })
     }
+  },
+  
+  // 跳转到注册页面
+  toRegisterPage: function() {
+    wx.navigateTo({
+      url: '/pages/register/register',
+    })
+  },
+
+  // 跳转到短信验证码登录页面
+  toTextMessageLoginPage: function() {
+    wx.navigateTo({
+      url: '/pages/textMessageLogin/textMessageLogin',
+    })
   },
  
   /**

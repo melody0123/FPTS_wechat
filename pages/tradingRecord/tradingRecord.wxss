@@ -83,7 +83,7 @@
   background: #ffffff;
 }
 .answer-content text{
-  font-size: 45rpx;
+  font-size: 32rpx;
   color: #454545;
   line-height: 60rpx;
 }
