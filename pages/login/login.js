@@ -7,7 +7,6 @@ const arrayBufferToBase64Img = (buffer) => {
 }
 
 Page({
- 
   /**
    * 页面的初始数据
    */
@@ -18,16 +17,19 @@ Page({
     imgUrl: ''
   },
   setUsername(e) {
+    // 同步输入框数据到 data
     this.setData({
       username: e.detail.value
     })
   },
   setPassword(e) {
+    // 同步输入框数据到 data
     this.setData({
       password: e.detail.value
     })
   },
   setValidateCode(e) {
+    // 同步输入框数据到 data
     this.setData({
       validateCode:e.detail.value
     })
@@ -54,33 +56,49 @@ Page({
           'cookie': wx.getStorageSync('sessionId') // 取 session
         },
         success (res) {
-          // console.log(res);
+          console.log(res);
           // 判断是否登录成功
           if (res.statusCode == 200 && res.data.code == 0 && res.data.msg == "操作成功") {
             // 登录成功
             console.log("登录成功");
-          } else if (res.statusCode == 200 && res.data.code == 500 && res.data.msg == "用户不存在/密码错误") {
-            // 登录失败，用户不存在/密码错误
-            console.log("登录失败，用户不存在/密码错误");
-          } else if (res.statusCode == 200 && res.data.code == 500 && res.data.msg == "验证码错误") {
-            // 登录失败，验证码错误
-            console.log("验证码错误");
-          } else {
-            // 网络错误
-            console.log("网络错误");
+            wx.showModal({
+              title: '登录成功',
+              content: '即将前往首页',
+              showCancel: false,
+              complete: (res) => {
+                wx.switchTab({
+                  url: '/pages/index/index',
+                })
+              }
+            })
+          } else if (res.statusCode == 200 && res.data.code == 500) {
+            // 登录失败
+            console.log("登录失败，" + res.data.msg);
+            wx.showModal({
+              title: '登录失败',
+              content: res.data.msg + '，请重试',
+              showCancel: false,
+              complete: (res) => {
+                wx.reLaunch({
+                  url: '/pages/login/login',
+                })
+              }
+            })
           }
-          // wx.showModal({
-          //   title: '提示',
-          //   content: '确认登录！',
-          //   showCancel: true,
-          //   success (res) {
-          //     if (res.confirm) {
-          //       wx.switchTab({
-          //         url: '/pages/index/index',
-          //       })
-          //     }
-          //   }
-          // })
+        },
+        fail(res) {
+          // 网络错误
+          console.log("网络错误");
+          wx.showModal({
+            title: '登录失败',
+            content: '网络错误，请重试',
+            showCancel: false,
+            complete: (res) => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }
+          })
         }
       })
     }
