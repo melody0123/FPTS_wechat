@@ -1,0 +1,20 @@
+<form>
+  <view class='list'>
+    <view class='name'>
+      <text>公告标题</text>
+      <input type='text' value='{{notice.noticeTitle}}'></input>
+    </view>
+    <view class='name'>
+      <text>公告内容</text>
+      <input type='text' value='{{notice.noticeContent}}'></input>
+    </view>
+    <view class='name'>
+      <text>创建者</text>
+      <input type='text' value='{{notice.createBy}}'></input>
+    </view>
+    <view class='name'>
+      <text>创建时间</text>
+      <input type='text' value='{{notice.createTime}}'></input>
+    </view>
+  </view>
+</form>

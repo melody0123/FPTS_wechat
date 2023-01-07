@@ -53,7 +53,7 @@ Page({
               showCancel: false,
               complete: (res) => {
                 wx.switchTab({
-                  url: '/pages/index/index',
+                  url: '/pages/news/news',
                 })
               }
             })
