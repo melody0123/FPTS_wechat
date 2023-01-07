@@ -47,8 +47,18 @@ Page({
       url: '/pages/accountAssets/accountAssets',
     })
   },
+  balanceInput: function (e) {
+    this.setData({
+      changeBalance:e.detail.value
+    })
+  },
   onLoad: function (options) {
     this.showAssets();
+    this.setData({
+      userId: wx.getStorageSync('userId'),
+      accountId: wx.getStorageSync('accountId'),
+      flag: wx.getStorageSync('flag')
+    })
   },
 
   showAssets: function(){
@@ -57,7 +67,7 @@ Page({
     var accountId = wx.getStorageSync('accontId');
     var flag = wx.getStorageSync('flag');
     wx.request({
-      url: 'http://localhost/assets/account_assets/getById',
+      url: 'http://localhost/assets/account_assets/getByNo',
       method:'POST',
       data:{userId: userId, accountId: accountId},
       header:{
@@ -100,6 +110,7 @@ Page({
             title: toastText,
             icon:'',
             duration:2000 });
+          wx.navigateBack();
         }
       })
     }
@@ -129,7 +140,9 @@ Page({
             wx.showToast({
               title: toastText,
               icon:'',
-              duration:2000 });
+              duration:2000 
+            })
+            wx.navigateBack();
           }
         })
       }

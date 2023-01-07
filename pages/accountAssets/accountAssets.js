@@ -14,17 +14,20 @@ Page({
   onLoad(options) {
     var that=this;
     wx.request({
-      url: 'http://localhost/assets/account_assets/getById',
+      url: 'http://localhost/assets/account_assets/getByNo',
       method:'POST',
-      data:{userId: 1, accountId: null},
+      data:{userId: '', accountId: ''},
       header:{
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
         'cookie': wx.getStorageSync('sessionId')
       },
       success:function(res){ 
-        var list=res.data; 
-        if(list==null){ 
-          var toastText='该用户未创建账户';
+        var list = res.data;
+        that.setData({
+          list: res.data
+        })
+        if(list.length==0){ 
+          var toastText='用户未创建账户';
           wx.showToast({
             title: toastText,
             icon:'error',
@@ -32,9 +35,6 @@ Page({
           })
         }else{
           console.log(res.data);
-          that.setData({
-            list:list
-          })
         }
       }
     })
@@ -42,18 +42,18 @@ Page({
 
   increase: function(e){
     wx.setStorageSync('flag', true);
-    wx.setStorageSync('accountId', e.currentTarget.dataset.accountId);
-    wx.setStorageSync('userId', e.currentTarget.dataset.userId);
+    wx.setStorageSync('accountId', e.currentTarget.dataset.accountid);
+    wx.setStorageSync('userId', e.currentTarget.dataset.userid);
     wx.navigateTo({
-      url: '/pages/assetsEdit/assetsEdit',
+      url: '../accountAssets/assetsEdit',
     })
   },
   decrease: function(e){
     wx.setStorageSync('flag', false);
-    wx.setStorageSync('accountId', e.currentTarget.dataset.accountId);
-    wx.setStorageSync('userId', e.currentTarget.dataset.userId);
+    wx.setStorageSync('accountId', e.currentTarget.dataset.accountid);
+    wx.setStorageSync('userId', e.currentTarget.dataset.userid);
     wx.navigateTo({
-      url: '/pages/assetsEdit/assetsEdit',
+      url: '../accountAssets/assetsEdit',
     })
   },
 
@@ -62,10 +62,12 @@ Page({
     var i = 0;
     var totalAssets = 0;
     for (;i<length;i++){
-      totalAssets += this.data.list[i];
+      totalAssets += this.data.list[i].totalAssets;
+      console.log(totalAssets);
     }
+    
     wx.showToast({
-      title: '您的账户总资产为'+totalAssets,
+      title: '总资产为'+totalAssets+'元',
       icon: '',
       duration: 2000
     })

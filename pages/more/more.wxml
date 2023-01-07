@@ -42,8 +42,8 @@
         <image src="../../images/index.png"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="recordFunc">
-        <text>交易记录</text>
-        <text style="color: cornflowerblue; font-size: xx-small;">（已在底边栏，点击切换）</text>
+        <text>账户资产</text>
+        <text style="color: lightskyblue; font-size: xx-small;">（不在底边栏，点击新开）</text>
       </view>
     </view>
     <view class="my-item flex-wrp">

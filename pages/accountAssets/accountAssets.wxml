@@ -1,19 +1,21 @@
 <scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
   <view class="table">
     <view class="tr bg-w">
+      <view class="th">用户ID</view>
       <view class="th">账户ID</view>
       <view class="th">账户余额</view>
       <view class="th">账户资产</view>
       <view class="th">操作</view>
     </view>
     <block wx:for="{{list}}">
-      <view class="tr bg-g" data-id='{{item.no}}' bindtap="assetsDetail">
+      <view class="tr bg-g" data-id='{{item.no}}'>
+        <view class="td">{{item.userId}}</view>
         <view class="td">{{item.accountId}}</view>
-        <view class="td">{{item.accountBalance}}</view>
-        <view class="td">{{item.totalAssets}}</view>
+        <view class="td">{{item.accountBalance}}元</view>
+        <view class="td">{{item.totalAssets}}元</view>
         <view class="td">
-          <button type="primary" size="mini" bindtap='increase' data-accountId='{{item.accountId}}' data-userId='{{item.userId}}' data-task='{{item.accountBalance}}'>充值余额</button>
-          <button type="warn" size="mini" bindtap='decrease' data-accountId='{{item.accountId}}' data-userId='{{item.userId}}' data-task='{{item.accountBalance}}'>取出金额</button>
+          <button type="primary" size="mini" bindtap='increase' data-accountId='{{item.accountId}}' data-userId='{{item.userId}}' data-task='{{item.accountBalance}}'>充值</button>
+          <button type="warn" size="mini" bindtap='decrease' data-accountId='{{item.accountId}}' data-userId='{{item.userId}}' data-task='{{item.accountBalance}}'>取款</button>
         </view>
         
       </view>

@@ -62,13 +62,13 @@ Page({
     }
   },
   recordFunc: function () {
-    if (1) {
+    if (0) {
       wx.switchTab({
-        url: '/pages/discovery/discovery',
+        url: '/pages/accountAssets/accountAssets',
       })
     } else {
       wx.navigateTo({
-        url: '/pages/discovery/discovery',
+        url: '/pages/accountAssets/accountAssets',
       })
     }
   },
