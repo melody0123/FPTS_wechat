@@ -14,7 +14,9 @@
     "pages/financeQuery/financeQuery",
     "pages/financeQuery/detail",
     "pages/financeWarehouse/financeWarehouse",
-    "pages/financeWarehouse/warehouseEdit"
+    "pages/financeWarehouse/warehouseEdit",
+    "pages/news/news",
+    "pages/news/newsSource"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,7 +32,7 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/financeQuery/financeQuery",
         "text": "",
         "iconPath": "images/index.png",
         "selectedIconPath": "images/index_focus.png"
@@ -42,13 +44,13 @@
         "selectedIconPath": "images/discovery_focus.png"
       },
       {
-        "pagePath": "pages/financeQuery/financeQuery",
+        "pagePath": "pages/index/index",
         "text": "",
         "iconPath": "images/ring.png",
         "selectedIconPath": "images/ring_focus.png"
       },
       {
-        "pagePath": "pages/chat/chat",
+        "pagePath": "pages/news/news",
         "text": "",
         "iconPath": "images/chat.png",
         "selectedIconPath": "images/chat_focus.png"

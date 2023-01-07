@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="search flex-wrp"> 吗  
+      <view class="search-left flex-item">
+          <image src="../../images/search.png"></image>
+          <input placeholder="搜索话题, 问题或人" placeholder-class="search-placeholder"/>
+      </view>
+      <view class="search-right flex-item" bindtap="upper">
+          <image src="../../images/lighting.png"></image>
+      </view>
+  </view>
+
+    <block wx:for="{{newsList}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+        <view class="feed-item" data-link="{{item.link}}" bindtap="bindItemTap">
+            <view class="feed-source">
+                <a class="">
+                    <text>{{item.source}}</text>
+                </a>
+                <image class="item-more" mode="aspectFit" src="../../images/more.png"></image>
+            </view>
+            <view class="feed-content">
+                <view class="question">
+                    <a class="question-link" >
+                        <text>{{item.title}}</text>
+                    </a>
+                </view>
+                <view class="answer-body">
+                    <view bindtap="bindItemTap">
+                        <text class="answer-txt">{{item.body}}</text>
+                    </view>
+                    <view class="answer-actions" >
+                        <view class="like dot">
+                            <a>{{item.read}} 阅读 </a>
+                        </view>
+                        <view class="comments dot">
+                            <a>{{item.comment}} 评论 </a>
+                        </view>
+                        <view class="follow-it">
+                            <a>作者：{{item.author}}</a>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+
