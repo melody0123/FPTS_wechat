@@ -12,59 +12,76 @@ Page({
    * 页面的初始数据
    */
   data: {
-    formData:{
-      username:'',
-      password:'',
-      validateCode:''
-    },
+    username:'',
+    password:'',
+    validateCode:'',
     imgUrl: ''
   },
-  formInputChange(e){
-  // console.log(e);
-  this.data.formData[e.currentTarget.dataset.field]=e.detail.value
-  this.setData({
-    formData:this.data.formData
-  })
+  setUsername(e) {
+    this.setData({
+      username: e.detail.value
+    })
+  },
+  setPassword(e) {
+    this.setData({
+      password: e.detail.value
+    })
+  },
+  setValidateCode(e) {
+    this.setData({
+      validateCode:e.detail.value
+    })
   },
   loginFun(){
     // console.log(this.data.formData);
-    if(!this.data.formData.username || !this.data.formData.password || !this.data.formData.validateCode){
+    // 检查所有登录用的字段是否填写完毕
+    if(!this.data.username || !this.data.password || !this.data.validateCode) {
+      // 没有填写完整
       wx.showToast({
         title: '信息不完整',
         icon:'error',
         duration: 2000
       })
-    }else {
-      let _this=this 
+    } else {
+      // 填写完整，向服务器发送登录请求
+      let that = this;
       wx.request({
         url: 'http://localhost/login', //请求地址
-        data: "username=" + _this.data.formData.username + "&password=" + _this.data.formData.password +
-              "&validateCode=" + _this.data.formData.validateCode + "&rememberMe=false",//请求数据
-        method: 'POST',//请求方法
+        data: {username: that.data.username, password: that.data.password, validateCode: that.data.validateCode, rememberMe: "false"}, //请求数据
+        method: 'POST', //请求方法
         header: {
           'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
-          'cookie': wx.getStorageSync('sessionId')
-          // 'content-type': 'x-www-form-urlencoded'
+          'cookie': wx.getStorageSync('sessionId') // 取 session
         },
         success (res) {
-           wx.setStorageSync('MyToken', res.data.token)
-           // console.log("打印token:",res.data.token)
-              //登录成功
-              wx.showModal({
-              title: '提示',
-              content: '确认登录！',
-              showCancel: true,
-              success (res) {
-                if (res.confirm) {
-                  wx.switchTab({
-                    url: '/pages/index/index',
-                  })
-                } else if (res.cancel) {
-                  wx.setStorageSync('MyToken', '')
-                }
-              }
-            })
+          // console.log(res);
+          // 判断是否登录成功
+          if (res.statusCode == 200 && res.data.code == 0 && res.data.msg == "操作成功") {
+            // 登录成功
+            console.log("登录成功");
+          } else if (res.statusCode == 200 && res.data.code == 500 && res.data.msg == "用户不存在/密码错误") {
+            // 登录失败，用户不存在/密码错误
+            console.log("登录失败，用户不存在/密码错误");
+          } else if (res.statusCode == 200 && res.data.code == 500 && res.data.msg == "验证码错误") {
+            // 登录失败，验证码错误
+            console.log("验证码错误");
+          } else {
+            // 网络错误
+            console.log("网络错误");
           }
+          // wx.showModal({
+          //   title: '提示',
+          //   content: '确认登录！',
+          //   showCancel: true,
+          //   success (res) {
+          //     if (res.confirm) {
+          //       wx.switchTab({
+          //         url: '/pages/index/index',
+          //       })
+          //     }
+          //   }
+          // })
+        }
       })
     }
   },
