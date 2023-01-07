@@ -11,8 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username:'',
-    password:'',
+    username:'admin',
+    password:'admin123',  //一键登录
     validateCode:'',
     imgUrl: ''
   },

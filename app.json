@@ -12,7 +12,9 @@
     "pages/todolist/todolistEdit",
     "pages/todolist/todolistAdd",
     "pages/financeQuery/financeQuery",
-    "pages/financeQuery/detail"
+    "pages/financeQuery/detail",
+    "pages/financeWarehouse/financeWarehouse",
+    "pages/financeWarehouse/warehouseEdit"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,7 +42,7 @@
         "selectedIconPath": "images/discovery_focus.png"
       },
       {
-        "pagePath": "pages/notify/notify",
+        "pagePath": "pages/financeQuery/financeQuery",
         "text": "",
         "iconPath": "images/ring.png",
         "selectedIconPath": "images/ring_focus.png"

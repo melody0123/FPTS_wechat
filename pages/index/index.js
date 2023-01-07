@@ -11,11 +11,12 @@ Page({
   bindItemTap: function() {
     wx.navigateTo({
       url: '../answer/answer'
+      //url: '../financeQuery/financeQuery'
     })
   },
   bindQueTap: function() {
     wx.navigateTo({
-      url: '../financeQuery/financeQuery'
+      url: '../question/question'
     })
   },
   onLoad: function () {

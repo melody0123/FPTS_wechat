@@ -55,8 +55,8 @@
       <view class="myitem-icon flex-item" >
         <image src="../../images/live.png"></image>
       </view>
-      <view class="myitem-name flex-item" bindtap="financeQueryFunc">
-        <text>行情查询（test）</text>
+      <view class="myitem-name flex-item" bindtap="financeWarehouseFunc">
+        <text>数据仓库</text>
       </view>
     </view>
     <view class="my-item flex-wrp">

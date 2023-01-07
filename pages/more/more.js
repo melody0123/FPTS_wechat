@@ -22,9 +22,9 @@ Page({
       url: '/pages/todolist/todolist',
     })
   },
-  financeQueryFunc:function(){
+  financeWarehouseFunc:function(){
     wx.navigateTo({
-      url: '/pages/financeQuery/financeQuery',
+      url: '/pages/financeWarehouse/financeWarehouse',
     })
   },
   onLoad: function () {
