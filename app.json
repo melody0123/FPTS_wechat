@@ -23,7 +23,8 @@
     "pages/accountAssets/accountAssets",
     "pages/accountAssets/assetsEdit",
     "pages/register/register",
-    "pages/textMessageLogin/textMessageLogin"
+    "pages/textMessageLogin/textMessageLogin",
+    "pages/financeQuery/addRecord"
   ],
   "window": {
     "backgroundTextStyle": "light",

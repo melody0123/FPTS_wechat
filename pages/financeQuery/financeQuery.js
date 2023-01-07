@@ -59,6 +59,12 @@ Page({
     that.searchData(currentNavtab);
     
   },
+  buy: function(e){
+    wx.setStorageSync('productId', e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '../addRecord/addRecord'
+    })
+  },
 
   showDetail: function(e){
     var app = getApp();

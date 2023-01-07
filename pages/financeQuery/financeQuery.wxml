@@ -18,7 +18,7 @@
         <view class="td">{{item.newPrice}}</view>
         <view class="td">
           <button type="primary" size="mini" bindtap='showDetail' data-id='{{item.id}}' data-pId='{{item.productId}}'>详细</button>
-          <button type="warn" size="mini" bindtap='' data-id='{{item.id}}' data-task='{{item.productId}}'>买入</button>
+          <button type="warn" size="mini" bindtap='buy' data-id='{{item.id}}'>买入</button>
         </view>
         
       </view>

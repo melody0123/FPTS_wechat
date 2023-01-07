@@ -66,8 +66,9 @@ Page({
       console.log(totalAssets);
     }
     
+    
     wx.showToast({
-      title: '总资产为'+totalAssets+'元',
+      title: '总资产'+totalAssets+'元',
       icon: '',
       duration: 2000
     })
