@@ -1,0 +1,36 @@
+<view class="top-tab flex-wrp flex-tab ">
+  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+    {{itemName}}
+  </view>
+</view>
+
+<scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">公告标题</view>
+      <view class="th">创建者</view>
+      <view class="th">创建时间</view>
+      <view class="th">操作</view>
+    </view>
+    <block wx:for="{{list}}">
+      <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+        <view class="td">{{item.noticeTitle}}</view>
+        <view class="td">{{item.createBy}}</view>
+        <view class="td">{{item.createTime}}</view>
+        <view class="td">
+          <button type="primary" size="mini" bindtap='noticeView' data-id='{{item.noticeId}}' data-task='{{item.noticeTitle}}'>查看</button>
+        </view>
+      </view>
+      <view class="tr" wx:else>
+        <view class="td">{{item.noticeTitle}}</view>
+        <view class="td">{{item.createBy}}</view>
+        <view class="td">{{item.createTime}}</view>
+        <view class="td">
+          <button type="primary" size="mini" bindtap='noticeView' data-id='{{item.noticeId}}' data-task='{{item.noticeTitle}}'>查看</button>
+        </view>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+
+<!-- <button type="primary" bindtap='todolistAdd'>新增通知公告</button> -->

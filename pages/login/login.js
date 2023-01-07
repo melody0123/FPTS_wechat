@@ -1,6 +1,6 @@
 // pages/login/login.js
 // pages/login/index.js
-import { btoa } from './loginUtils';
+import { btoa } from '../../utils/imageUtils';
 const arrayBufferToBase64Img = (buffer) => {
   const str = String.fromCharCode(...new Uint8Array(buffer));
   return `data:image/jpeg;base64,${btoa(str)}`;
@@ -55,7 +55,7 @@ Page({
               showCancel: false,
               complete: (res) => {
                 wx.switchTab({
-                  url: '/pages/index/index',
+                  url: '/pages/news/news',
                 })
               }
             })
@@ -103,6 +103,27 @@ Page({
   toTextMessageLoginPage: function() {
     wx.navigateTo({
       url: '/pages/textMessageLogin/textMessageLogin',
+    })
+  },
+
+  // 刷新验证码
+  refreshValidateCode: function() {
+    let that = this;
+    wx.request({
+      url: "http://localhost/captcha/captchaImage?type=math&s=" + Math.random(),
+      method: 'GET',
+      responseType: 'arraybuffer',
+      header: {
+        'cookie': wx.getStorageSync('sessionId') // 取 session
+      },
+      success: function(res) {
+        // 显示验证码图片
+       let url = arrayBufferToBase64Img(res.data);
+       that.setData({
+        imgUrl : url,     //设置data里面的图片url
+        show:true
+       })
+      }
     })
   },
  

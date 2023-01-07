@@ -1,4 +1,3 @@
-
 <view class="container more">
   <view class="user flex-wrp" bindtap="loginFunc">
     <view class="avatar flex-item">
@@ -12,61 +11,58 @@
 
   <view class="my">
     <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/eye.png"></image>
+      <view class="myitem-icon flex-item">
+        <image src="../../images/chat.png"></image>
       </view>
-      <view class="myitem-name flex-item" bindtap="todolistFunc">
-        <text>我的待办事项</text>
-      </view>
-    </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/star.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>我的收藏</text>
+      <view class="myitem-name flex-item" bindtap="newsFunc">
+        <text>财经新闻</text>
+        <text style="color: cornflowerblue; font-size: xx-small;">（已在底边栏，点击切换）</text>
       </view>
     </view>
     <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/draft.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>我的草稿</text>
-      </view>
-    </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/recent.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>最近浏览</text>
-      </view>
-    </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
+      <view class="myitem-icon flex-item">
         <image src="../../images/book.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>我的书架</text>
-      </view>
-    </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/live.png"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="financeWarehouseFunc">
         <text>数据仓库</text>
+        <text style="color: lightskyblue; font-size: xx-small;">（不在底边栏，点击新开）</text>
       </view>
     </view>
     <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/zhi.png"></image>
+      <view class="myitem-icon flex-item">
+        <image src="../../images/discovery.png"></image>
       </view>
-      <view class="myitem-name flex-item">
-        <text>我的值乎</text>
+      <view class="myitem-name flex-item" bindtap="financeQueryFunc">
+        <text>行情查询</text>
+        <text style="color: cornflowerblue; font-size: xx-small;">（已在底边栏，点击切换）</text>
       </view>
     </view>
-
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item">
+        <image src="../../images/index.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="recordFunc">
+        <text>交易记录</text>
+        <text style="color: cornflowerblue; font-size: xx-small;">（已在底边栏，点击切换）</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item">
+        <image src="../../images/allread.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="todolistFunc">
+        <text>待办事项</text>
+        <text style="color: lightskyblue; font-size: xx-small;">（不在底边栏，点击新开）</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item">
+        <image src="../../images/ring.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="noticeFunc">
+        <text>通知公告</text>
+        <text style="color: cornflowerblue; font-size: xx-small;">（已在底边栏，点击切换）</text>
+      </view>
+    </view>
   </view>
 </view>

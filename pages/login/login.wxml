@@ -11,7 +11,7 @@
     </view>
     <view class="validateCodeSection">
         <input name="validateCode" placeholder="请输入验证码" placeholder-style="color: white"/>
-        <image src="{{imgUrl}}"/>
+        <image src="{{imgUrl}}" bindtap="refreshValidateCode"/>
     </view>
     <button class="loginButton" form-type="submit">登录</button>
   </form>

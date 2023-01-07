@@ -1,41 +1,122 @@
-//logs.js
 var util = require('../../utils/util.js')
 var app = getApp()
+import { btoa } from '../../utils/imageUtils';
+const arrayBufferToBase64Img = (buffer) => {
+  const str = String.fromCharCode(...new Uint8Array(buffer));
+  return `data:image/jpeg;base64,${btoa(str)}`;
+}
+
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {}
+    userInfo: {
+      avatarUrl: "",
+      nickName: ""
+    }
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: ''
     })
   },
-  loginFunc:function(){
+  loginFunc: function () {
     wx.navigateTo({
       url: '/pages/login/login',
     })
   },
-  todolistFunc:function(){
-    wx.navigateTo({
-      url: '/pages/todolist/todolist',
-    })
+
+  /* 当功能已在底边栏应用时，标记为1，使用switchTab切换页面，
+  当功能不在底边栏应用时，标记为0，使用navigateTo新开页面 */
+  newsFunc: function () {
+    if (1) {
+      wx.switchTab({
+        url: '/pages/news/news',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/news/news',
+      })
+    }
   },
-  financeWarehouseFunc:function(){
-    wx.navigateTo({
-      url: '/pages/financeWarehouse/financeWarehouse',
-    })
+  financeWarehouseFunc: function () {
+    if (0) {
+      wx.switchTab({
+        url: '/pages/financeWarehouse/financeWarehouse',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/financeWarehouse/financeWarehouse',
+      })
+    }
   },
+  financeQueryFunc: function () {
+    if (1) {
+      wx.switchTab({
+        url: '/pages/financeQuery/financeQuery',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/financeQuery/financeQuery',
+      })
+    }
+  },
+  recordFunc: function () {
+    if (1) {
+      wx.switchTab({
+        url: '/pages/discovery/discovery',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/discovery/discovery',
+      })
+    }
+  },
+  todolistFunc: function () {
+    if (0) {
+      wx.switchTab({
+        url: '/pages/todolist/todolist',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/todolist/todolist',
+      })
+    }
+  },
+  noticeFunc: function () {
+    if (1) {
+      wx.switchTab({
+        url: '/pages/notice/notice',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/notice/notice',
+      })
+    }
+  },
+
   onLoad: function () {
     console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
+    let that = this;
+    // 尝试获取用户头像和昵称
+    wx.request({
+      url: 'http://localhost/img/profile.jpg',
+      method: "GET",
+      responseType: 'arraybuffer',
+      header: {
+        cookie: wx.getStorageSync('sessionId')
+      },
+      success: function(res) {
+        // 显示验证码图片
+       let url = arrayBufferToBase64Img(res.data);
+       that.setData({
+        userInfo: {
+          avatarUrl: url,
+          show:true,
+          nickName: ""
+        }
+       })
+      }
     })
   }
 })

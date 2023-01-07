@@ -25,15 +25,15 @@ var index_next = require('../data/data_index_next.js')
 var discovery = require('../data/data_discovery.js')
 var discovery_next = require('../data/data_discovery_next.js')
 
-function getData(url){
-  return new Promise(function(resolve, reject){
+function getData(url) {
+  return new Promise(function (resolve, reject) {
     wx.request({
       url: url,
       data: {},
       header: {
         //'Content-Type': 'application/json'
       },
-      success: function(res) {
+      success: function (res) {
         console.log("success")
         resolve(res)
       },
@@ -45,19 +45,19 @@ function getData(url){
   })
 }
 
-function getData2(){
+function getData2() {
   return index.index;
 }
 
-function getNext(){
+function getNext() {
   return index_next.next;
 }
 
-function getDiscovery(){
+function getDiscovery() {
   return discovery.discovery;
 }
 
-function discoveryNext(){
+function discoveryNext() {
   return discovery_next.next;
 }
 
@@ -68,7 +68,3 @@ module.exports.getData2 = getData2;
 module.exports.getNext = getNext;
 module.exports.getDiscovery = getDiscovery;
 module.exports.discoveryNext = discoveryNext;
-
-
-
-
