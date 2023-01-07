@@ -72,3 +72,9 @@ button
   color: white;
   background-color: rgb(0, 187, 0);
 }
+
+.registerBox
+{
+  position: relative;
+  color: white;
+}

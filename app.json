@@ -19,7 +19,8 @@
     "pages/news/newsSource",
     "pages/tradingRecord/tradingRecord",
     "pages/accountAssets/accountAssets",
-    "pages/accountAssets/assetsEdit"
+    "pages/accountAssets/assetsEdit",
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",
