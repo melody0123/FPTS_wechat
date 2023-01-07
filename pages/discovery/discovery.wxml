@@ -17,7 +17,7 @@
           </a>
         </view>
         <view class="feed-content">
-          <view class="question"  bindtap="bindQueTap">
+          <view class="question"  bindtap="bindQueTap" orderId="{{item.orderId}}">
             <a class="question-link">
               <text>产品ID：{{item.productId}}</text>
             </a>
@@ -26,30 +26,30 @@
             <view bindtap="bindItemTap">
               <text class="answer-txt">产品价格：{{item.productPrice}}</text>
             </view>
-            <view class="answer-actions" bindtap="bindItemTap">
+            <view class="answer-actions" bindtap="bindQueTap" orderId="{{item.orderId}}">
               <view class="like dot">
                 <a>产品数量：{{item.productAmount}}</a>
               </view>
               <view class="comments dot">
-                <a>产品种类：</a>
-                <a>{{tradingRecord.numToString(item.productType)}}</a>
+                <a>产品种类：A股</a>
               </view>
             </view>
           </view>
+          
         </view>
       </view>
     </block>
   </view>
   <view class="ctnt1 placehold" hidden="{{currentNavtab==1 ? '' : true}}">
     <block wx:for="{{bStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-      <view class="feed-item">
+      <view class="feed-item">n
         <view class="feed-source">
           <a class="">
             <text>用户ID：{{item.userId}}</text>
           </a>
         </view>
         <view class="feed-content">
-          <view class="question"  bindtap="bindQueTap">
+          <view class="question"  bindtap="bindQueTap" orderId="{{item.orderId}}">
             <a class="question-link">
               <text>产品ID：{{item.productId}}</text>
             </a>
@@ -58,13 +58,12 @@
             <view bindtap="bindItemTap">
               <text class="answer-txt">产品价格：{{item.productPrice}}</text>
             </view>
-            <view class="answer-actions" bindtap="bindItemTap">
+            <view class="answer-actions" bindtap="bindItemTap" orderId="{{item.orderId}}">
               <view class="like dot">
                 <a>产品数量：{{item.productAmount}}</a>
               </view>
               <view class="comments dot">
-                <a>产品种类：</a>
-                <a>{{tradingRecord.numToString(item.productType)}}</a>
+                <a>产品种类：B股</a>
               </view>
             </view>
           </view>
@@ -81,7 +80,7 @@
           </a>
         </view>
         <view class="feed-content">
-          <view class="question"  bindtap="bindQueTap">
+          <view class="question"  bindtap="bindQueTap" orderId="{{item.orderId}}">
             <a class="question-link">
               <text>产品ID：{{item.productId}}</text>
             </a>
@@ -90,13 +89,12 @@
             <view bindtap="bindItemTap">
               <text class="answer-txt">产品价格：{{item.productPrice}}</text>
             </view>
-            <view class="answer-actions" bindtap="bindItemTap">
+            <view class="answer-actions" bindtap="bindItemTap" orderId="{{item.orderId}}">
               <view class="like dot">
                 <a>产品数量：{{item.productAmount}}</a>
               </view>
               <view class="comments dot">
-                <a>产品种类：</a>
-                <a>{{tradingRecord.numToString(item.productType)}}</a>
+                <a>产品种类：债券</a>
               </view>
             </view>
           </view>
@@ -113,7 +111,7 @@
           </a>
         </view>
         <view class="feed-content">
-          <view class="question"  bindtap="bindQueTap">
+          <view class="question"  bindtap="bindQueTap" orderId="{{item.orderId}}">
             <a class="question-link">
               <text>产品ID：{{item.productId}}</text>
             </a>
@@ -122,13 +120,12 @@
             <view bindtap="bindItemTap">
               <text class="answer-txt">产品价格：{{item.productPrice}}</text>
             </view>
-            <view class="answer-actions" bindtap="bindItemTap">
+            <view class="answer-actions" bindtap="bindItemTap" orderId="{{item.orderId}}">
               <view class="like dot">
                 <a>产品数量：{{item.productAmount}}</a>
               </view>
               <view class="comments dot">
-                <a>产品种类：</a>
-                <a>{{tradingRecord.numToString(item.productType)}}</a>
+                <a>产品种类：基金</a>
               </view>
             </view>
           </view>

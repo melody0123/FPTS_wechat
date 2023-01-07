@@ -65,7 +65,7 @@ Page({
     app.globalData.financelistId = e.currentTarget.dataset.id;
     console.log(app.globalData.financelistId);
     wx.navigateTo({
-      url: '/pages/financeWarehouse/warehosueEdit',
+      url: '/pages/financeWarehouse/warehouseEdit',
     })
   },
   /**
