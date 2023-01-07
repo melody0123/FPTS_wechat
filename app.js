@@ -28,5 +28,6 @@ App({
     userInfo:null,
     todolistId:null,
     newsSourceLink:null,
+    serverIP:"localhost",
   }
 })
