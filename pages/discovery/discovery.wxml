@@ -38,7 +38,7 @@
       </view>
     </block>
   </view>
-  <view class="ctnt1 placehold" hidden="{{currentNavtab==1 ? '' : true}}">
+  <view class="ctnt0" hidden="{{currentNavtab==1 ? '' : true}}">
     <block wx:for="{{bStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" decode="{{true}}">
       <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}' data-name='{{item.name}}'>
         <view class="feed-source">
@@ -70,7 +70,7 @@
       </view>
     </block>
   </view>
-  <view class="ctnt2 placehold" hidden="{{currentNavtab==2 ? '' : true}}" >
+  <view class="ctnt0" hidden="{{currentNavtab==2 ? '' : true}}" >
     <block wx:for="{{bond}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" decode="{{true}}">
       <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'  data-name='{{item.name}}'>
         <view class="feed-source">
@@ -102,7 +102,7 @@
       </view>
     </block>
   </view>
-  <view class="ctnt3 placehold" hidden="{{currentNavtab==3 ? '' : true}}">
+  <view class="ctnt0" hidden="{{currentNavtab==3 ? '' : true}}">
     <block wx:for="{{fund}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" decode="{{true}}">
       <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}' data-name='{{item.name}}'>
         <view class="feed-source">

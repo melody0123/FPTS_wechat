@@ -16,7 +16,7 @@
         <text decode="{{true}}">
             产品ID：&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    {{productId}}
 
-            产品名称：&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    {{name}}                      
+            产品名称：&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    {{name}}                      
 
             产品价格：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{productPrice}}元                                        
 
