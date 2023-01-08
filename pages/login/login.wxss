@@ -93,8 +93,8 @@ input
   background-color: darkorange;
   color: white;
   position: relative; 
-  left: 108rpx; 
-  top: 272rpx; 
+  left: 148rpx; 
+  top: 272rpx;
   width: 230rpx; 
   height: 68rpx; 
   display: block; 
@@ -106,11 +106,11 @@ input
   font-size: small;
   background-color: rgb(255, 208, 0);
   color: white;
-  position: relative; 
   width: 230rpx; 
   height: 68rpx; 
   display: block; 
   box-sizing: border-box; 
-  left: 108rpx; 
-  top: 47rpx;
+  left: 148rpx; 
+  top: 47rpx; 
+  position: relative
 }
