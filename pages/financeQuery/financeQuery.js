@@ -62,8 +62,9 @@ Page({
   },
   buy: function(e){
     wx.setStorageSync('productId', e.currentTarget.dataset.id);
+    console.log("yunxingle")
     wx.navigateTo({
-      url: '../addRecord/addRecord'
+      url: '../financeQuery/addRecord'
     })
   },
 
