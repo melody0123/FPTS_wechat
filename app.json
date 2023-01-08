@@ -29,7 +29,8 @@
     "pages/feedback/feedback",
     "pages/feedback/feedbackAdd",
     "pages/register/provision",
-    "pages/feedback/feedbackEdit"
+    "pages/feedback/feedbackEdit",
+    "pages/resetPassword/setNewPassword"
   ],
   "window": {
     "backgroundTextStyle": "light",
