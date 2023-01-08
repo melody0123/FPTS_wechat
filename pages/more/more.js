@@ -59,7 +59,7 @@ Page({
       })
     }
   },
-  recordFunc: function () {
+  assetsFunc: function () {
     if (0) {
       wx.switchTab({
         url: '/pages/accountAssets/accountAssets',
@@ -67,6 +67,17 @@ Page({
     } else {
       wx.navigateTo({
         url: '/pages/accountAssets/accountAssets',
+      })
+    }
+  },
+  recordFunc: function () {
+    if (1) {
+      wx.switchTab({
+        url: '/pages/discovery/discovery',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/discovery/discovery',
       })
     }
   },
