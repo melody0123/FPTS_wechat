@@ -20,6 +20,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "resetPassword",
+          "pathName": "pages/resetPassword/resetPassword",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
