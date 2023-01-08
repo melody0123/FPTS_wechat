@@ -112,6 +112,7 @@ Page({
   bindItemTap: function(e) {
     console.log(e.currentTarget.dataset);
     wx.setStorageSync('orderId', e.currentTarget.dataset.orderid);
+    wx.setStorageSync('name', e.currentTarget.dataset.name);
     wx.navigateTo({
       url: '../tradingRecord/tradingRecord'
     })

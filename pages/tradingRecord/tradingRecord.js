@@ -5,14 +5,15 @@ var util = require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
-    orderId: wx.getStorageSync('orderId'),
+    orderId: null,
     productId: '',
     productType: '',
     productAmount: null,
     productPrice: '',
     orderDirection: '',
     accountId: '',
-    orderTime: null
+    orderTime: null,
+    name:''
   },
   //事件处理函数
   toQuestion: function() {
@@ -21,8 +22,13 @@ Page({
     })
   },
   onLoad: function () {
+    
     console.log('onLoad')
     var that = this
+    that.setData({
+      orderId: wx.getStorageSync('orderId'),
+      name: wx.getStorageSync('name')
+    })
     wx.request({
       url: 'http://' + app.globalData.serverIP + '/record/transaction_record/getById',
       data:{orderId: wx.getStorageSync('orderId')},

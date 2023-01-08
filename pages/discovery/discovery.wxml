@@ -7,8 +7,8 @@
 
 <scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
   <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
-    <block wx:for="{{aStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'>
+    <block wx:for="{{aStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" decode="{{true}}">
+      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}' data-name='{{item.name}}'>
         <view class="feed-source">
           <a class="">
             <text>用户ID：{{item.userId}}</text>
@@ -17,7 +17,8 @@
         <view class="feed-content">
           <view class="question">
             <a class="question-link">
-              <text>产品ID：{{item.productId}}</text>
+              <text decode="{{true}}">产品ID：{{item.productId}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+              <text>产品名称：{{item.name}}</text>
             </a>
           </view>
           <view class="answer-body">
@@ -38,8 +39,8 @@
     </block>
   </view>
   <view class="ctnt1 placehold" hidden="{{currentNavtab==1 ? '' : true}}">
-    <block wx:for="{{bStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'>
+    <block wx:for="{{bStock}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" decode="{{true}}">
+      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}' data-name='{{item.name}}'>
         <view class="feed-source">
           <a class="">
             <text>用户ID：{{item.userId}}</text>
@@ -48,7 +49,8 @@
         <view class="feed-content">
           <view class="question">
             <a class="question-link">
-              <text>产品ID：{{item.productId}}</text>
+              <text decode="{{true}}">产品ID：{{item.productId}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+              <text>产品名称：{{item.name}}</text>
             </a>
           </view>
           <view class="answer-body">
@@ -69,8 +71,8 @@
     </block>
   </view>
   <view class="ctnt2 placehold" hidden="{{currentNavtab==2 ? '' : true}}" >
-    <block wx:for="{{bond}}" wx:for-index="idx" wx:for-item="item">
-      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'>
+    <block wx:for="{{bond}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" decode="{{true}}">
+      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'  data-name='{{item.name}}'>
         <view class="feed-source">
           <a class="">
             <text>用户ID：{{item.userId}}</text>
@@ -79,7 +81,8 @@
         <view class="feed-content">
           <view class="question">
             <a class="question-link">
-              <text>产品ID：{{item.productId}}</text>
+              <text decode="{{true}}">产品ID：{{item.productId}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+              <text>产品名称：{{item.name}}</text>
             </a>
           </view>
           <view class="answer-body">
@@ -100,8 +103,8 @@
     </block>
   </view>
   <view class="ctnt3 placehold" hidden="{{currentNavtab==3 ? '' : true}}">
-    <block wx:for="{{fund}}" wx:for-index="idx" wx:for-item="item">
-      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}'>
+    <block wx:for="{{fund}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" decode="{{true}}">
+      <view class="feed-item" bindtap="bindItemTap" data-orderId='{{item.orderId}}' data-name='{{item.name}}'>
         <view class="feed-source">
           <a class="">
             <text>用户ID：{{item.userId}}</text>
@@ -110,7 +113,8 @@
         <view class="feed-content">
           <view class="question">
             <a class="question-link">
-              <text>产品ID：{{item.productId}}</text>
+              <text decode="{{true}}">产品ID：{{item.productId}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+              <text>产品名称：{{item.name}}</text>
             </a>
           </view>
           <view class="answer-body">
