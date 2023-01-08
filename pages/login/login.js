@@ -116,9 +116,9 @@ Page({
   },
 
   // 跳转到短信验证码登录页面
-  toTextMessageLoginPage: function() {
+  toResetPage: function() {
     wx.navigateTo({
-      url: '/pages/textMessageLogin/textMessageLogin',
+      url: '/pages/resetPassword/resetPassword',
     })
   },
 

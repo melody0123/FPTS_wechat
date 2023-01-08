@@ -24,7 +24,7 @@
     "pages/accountAssets/accountAssets",
     "pages/accountAssets/assetsEdit",
     "pages/register/register",
-    "pages/textMessageLogin/textMessageLogin",
+    "pages/resetPassword/resetPassword",
     "pages/financeQuery/addRecord",
     "pages/feedback/feedback",
     "pages/feedback/feedbackAdd",

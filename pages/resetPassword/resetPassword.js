@@ -1,4 +1,4 @@
-// pages/textMessageLogin/textMessageLogin.js
+// pages/resetPassword/resetPassword.js
 Page({
 
   /**
