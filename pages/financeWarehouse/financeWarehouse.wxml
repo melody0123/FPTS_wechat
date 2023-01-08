@@ -18,7 +18,7 @@
         <view class="td">{{item.newPrice}}</view>
         <view class="td">
           <button type="primary" size="mini" bindtap='warehouseEdit' data-id='{{item.id}}' data-pId='{{item.productId}}'>修改</button>
-          <button type="warn" size="mini" bindtap='warehouseEdit' data-id='{{item.id}}' data-task='{{item.productId}}'>删除</button>
+          <button type="warn" size="mini" bindtap='warehouseDelete' data-id='{{item.id}}' data-name='{{item.name}}'>删除</button>
         </view>
         
       </view>
@@ -28,9 +28,10 @@
         <view class="td">{{item.newPrice}}</view>
         <view class="td">
           <button type="primary" size="mini" bindtap='warehouseEdit' data-id='{{item.id}}' data-pId='{{item.productId}}'>修改</button>
-          <button type="warn" size="mini" bindtap='warehouseEdit' data-id='{{item.id}}' data-task='{{item.productId}}'>删除</button>
+          <button type="warn" size="mini" bindtap='warehouseDelete' data-id='{{item.id}}' data-name='{{item.name}}'>删除</button>
         </view>
       </view>
     </block>
   </view>
+  <button type = "primary" bindtap='warehouseAdd'>添加产品</button>
 </scroll-view>

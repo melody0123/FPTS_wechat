@@ -15,6 +15,7 @@
     "pages/financeQuery/detail",
     "pages/financeWarehouse/financeWarehouse",
     "pages/financeWarehouse/warehouseEdit",
+    "pages/financeWarehouse/warehouseAdd",
     "pages/news/news",
     "pages/news/newsSource",
     "pages/notice/notice",
