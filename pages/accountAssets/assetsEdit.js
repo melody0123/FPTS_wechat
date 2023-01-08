@@ -68,7 +68,7 @@ Page({
     var accountId = wx.getStorageSync('accontId');
     var flag = wx.getStorageSync('flag');
     wx.request({
-      url: 'http://' + app.globalData.serverIP + '/assets/account_assets/getById',
+      url: 'http://' + app.globalData.serverIP + '/assets/account_assets/getByNo',
       method:'POST',
       data:{userId: userId, accountId: accountId},
       header:{

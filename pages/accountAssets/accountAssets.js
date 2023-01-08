@@ -13,11 +13,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    var app = getApp();
+    var userid = app.globalData.sysUserInfo.userId;
+    if (userid == '1'){
+      userid = '';
+    }
     var that=this;
     wx.request({
-      url: 'http://' + app.globalData.serverIP + '/assets/account_assets/getById',
+      url: 'http://' + app.globalData.serverIP + '/assets/account_assets/getByNo',
       method:'POST',
-      data:{userId: '', accountId: ''},
+      data:{userId: userid, accountId: ''},
       header:{
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
         'cookie': wx.getStorageSync('sessionId')
