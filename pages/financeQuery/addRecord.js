@@ -20,7 +20,7 @@ Page({
     console.log('onLoad')
     var that = this
     wx.request({
-      url: 'http://localhost/finance_query/finance_query/wxEdit/'+wx.getStorageSync('productId'),
+      url: 'http://' + app.globalData.serverIP + '/finance_query/finance_query/wxEdit/'+wx.getStorageSync('productId'),
       data:{},
       method: 'Post',  //方法分GET和POST，根据需要写
       header: {
