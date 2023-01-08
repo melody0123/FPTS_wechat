@@ -4,6 +4,7 @@
   </view>
 </view>
 <scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <button type = "primary" bindtap='warehouseAdd'>添加产品</button>
   <view class="table">
     <view class="tr bg-w">
       <view class="th">产品代码</view>
@@ -33,5 +34,5 @@
       </view>
     </block>
   </view>
-  <button type = "primary" bindtap='warehouseAdd'>添加产品</button>
+  
 </scroll-view>
