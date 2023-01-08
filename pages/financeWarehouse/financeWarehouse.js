@@ -69,6 +69,49 @@ Page({
       url: '/pages/financeWarehouse/warehouseEdit',
     })
   },
+
+  warehouseAdd: function(){
+    wx.navigateTo({
+      url: '/pages/financeWarehouse/warehouseAdd',
+    })
+  },
+
+  warehouseDelete: function (e) { 
+    var that=this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除[' + e.target.dataset.name +']吗？',
+      success:function(sm){ 
+        if(sm.confirm){
+          wx.request({
+            url: 'http://' + app.globalData.serverIP + '/finance_warehouse/finance_warehouse/remove',
+            method:'POST',
+            data:{
+              ids: e.target.dataset.id,
+            },
+            header:{
+              'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
+              'cookie': wx.getStorageSync('sessionId')
+            },
+            success:function(res){ 
+              var result=res.data.msg;
+              console.log(result); 
+              var toastText="删除成功"; 
+              if(result!= "操作成功"){
+                toastText = "删除失败";
+              }else{
+                that.onLoad();
+              }
+              wx.showToast({
+                title: toastText,
+                icon:'',
+                duration:2000 });
+            }
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

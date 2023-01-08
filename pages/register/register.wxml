@@ -1,2 +1,23 @@
 <!--pages/register/register.wxml-->
-<text>pages/register/register.wxml</text>
+<view class="content">
+  <image class="background" src="../../images/LoginBackground.jpg"></image>
+  <text class="h1">用户注册</text>
+  <form class="registerBox" bindsubmit="registerFun">
+    <view class="section">
+        <input name="loginName" placeholder="请输入用户名" placeholder-style="color: white"/>
+    </view>
+    <view class="section">
+        <input name="password" password="true" placeholder="请输入密码" placeholder-style="color: white"/>
+    </view>
+    <view class="validateCodeSection">
+        <input name="validateCode" placeholder="请输入验证码" placeholder-style="color: white"/>
+        <image src="{{imgUrl}}" bindtap="refreshValidateCode"/>
+    </view>
+    <checkbox-group bindchange="checkBoxChange">
+      <checkbox class="provision" value="check0">我已阅读并同意</checkbox>
+      <text bindtap="showProvision" class="provisionLink">使用条款</text>
+    </checkbox-group>
+    <button class="registerButton" form-type="submit" style="position: relative; left: -2rpx; top: 0rpx">注册</button>
+  </form>
+</view>
+
