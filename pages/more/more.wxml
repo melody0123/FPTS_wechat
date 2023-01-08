@@ -57,6 +57,15 @@
     </view>
     <view class="my-item flex-wrp">
       <view class="myitem-icon flex-item">
+        <image src="../../images/write.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap="feedbackFunc">
+        <text>用户反馈</text>
+        <text style="color: lightskyblue; font-size: xx-small;">（不在底边栏，点击新开）</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item">
         <image src="../../images/ring.png"></image>
       </view>
       <view class="myitem-name flex-item" bindtap="noticeFunc">

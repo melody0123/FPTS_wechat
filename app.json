@@ -24,7 +24,9 @@
     "pages/accountAssets/assetsEdit",
     "pages/register/register",
     "pages/textMessageLogin/textMessageLogin",
-    "pages/financeQuery/addRecord"
+    "pages/financeQuery/addRecord",
+    "pages/feedback/feedback",
+    "pages/feedback/feedbackAdd"
   ],
   "window": {
     "backgroundTextStyle": "light",

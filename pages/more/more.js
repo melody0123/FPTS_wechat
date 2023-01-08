@@ -92,6 +92,17 @@ Page({
       })
     }
   },
+  feedbackFunc: function () {
+    if (0) {
+      wx.switchTab({
+        url: '/pages/feedback/feedback',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/feedback/feedback',
+      })
+    }
+  },
 
   onLoad: function () {
     console.log('onLoad')
