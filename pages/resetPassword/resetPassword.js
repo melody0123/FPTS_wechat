@@ -1,6 +1,4 @@
 // pages/resetPassword/resetPassword.js
-// pages/login/login.js
-// pages/login/index.js
 var app = getApp();
 import { btoa } from '../../utils/imageUtils';
 const arrayBufferToBase64Img = (buffer) => {
@@ -13,8 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username:'',
-    password:'', 
+    mailAddress:'',
     validateCode:'',
     imgUrl: ''
   },
@@ -23,7 +20,7 @@ Page({
   submitResetRequest: function(e) {
     // console.log(e.detail.value);
     // 读取一边用户输入的数据
-    this.data.username = e.detail.value.mailAddress;
+    this.data.mailAddress = e.detail.value.mailAddress;
     this.data.validateCode = e.detail.value.validateCode;
     // 检查所有字段是否填写完毕
     if(!this.data.mailAddress || !this.data.validateCode) {
