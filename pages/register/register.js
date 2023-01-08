@@ -18,6 +18,13 @@ Page({
     imgUrl: ''
   },
 
+  // 跳转到使用条款界面
+  showProvision: function() {
+    wx.navigateTo({
+      url: '/pages/register/provision',
+    })
+  },
+
   // 监听 checkbox
   checkBoxChange: function(e) {
     // console.log(e.detail)

@@ -14,7 +14,8 @@
         <image src="{{imgUrl}}" bindtap="refreshValidateCode"/>
     </view>
     <checkbox-group bindchange="checkBoxChange">
-      <checkbox class="provision" value="check0">我已阅读并同意使用条款</checkbox>
+      <checkbox class="provision" value="check0">我已阅读并同意</checkbox>
+      <text bindtap="showProvision" class="provisionLink">使用条款</text>
     </checkbox-group>
     <button class="registerButton" form-type="submit" style="position: relative; left: -2rpx; top: 0rpx">注册</button>
   </form>
