@@ -14,12 +14,12 @@
     </view>
     <block wx:for="{{list}}">
       <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
-        <view class="td" data-id='{{item.userFeedbackContent}}' bindtap="feedbackDetail">{{item.userFeedbackContent}}</view>
+        //<view class="td" data-id='{{item.userFeedbackContent}}' bindtap="feedbackDetail">{{item.userFeedbackContent}}</view>//
         <view class="td">{{item.userFeedbackCreatetime}}</view>
         <view class="td">{{item.adminFeedbackContent}}</view>
         <view class="td">
-          <button type="primary" size="mini" bindtap='feedbackEdit' data-id='{{item.userFeedbackId}}' data-task='{{item.userFeedbackContent}}'></button>
-          <button type="warn" size="mini" bindtap='feedbackDelete' data-id='{{item.userFeedbackId}}' data-task='{{item.userFeedbackContent}}'>删除</button>
+          <button type="primary" size="mini" bindtap='feedbackEdit' data-id='{{item.userFeedbackId}}' data-='{{item.userFeedbackContent}}'>编辑</button>
+          <button type="warn" size="mini" bindtap='feedbackDelete' data-id='{{item.userFeedbackId}}' data-='{{item.userFeedbackContent}}'>删除</button>
         </view>
         
       </view>

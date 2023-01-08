@@ -30,6 +30,6 @@ App({
     todolistId:null,
     newsSourceLink:null,
     serverIP:"localhost",
-    feedbackId:null,
+    userFeedbackId:null,
   }
 })

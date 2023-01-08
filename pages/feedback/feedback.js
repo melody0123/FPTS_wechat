@@ -63,8 +63,8 @@ Page({
 
   feedbackEdit: function(e){
     var app = getApp();
-    app.globalData.feedbackId = e.currentTarget.dataset.id;
-    console.log(app.globalData.feedbackId);
+    app.globalData.userFeedbackId = e.currentTarget.dataset.userFeedbackId;
+    console.log(app.globalData.userFeedbackId);
     wx.navigateTo({
       url: '/pages/feedback/feedbackEdit',
     })
@@ -73,14 +73,14 @@ Page({
     var that=this;
     wx.showModal({
       title: '提示',
-      content: '确定要删除[' + e.target.dataset.task +']吗？',
+      content: '确定要删除[' + e.target.dataset.userFeedbackId +']吗？',
       success:function(sm){ 
         if(sm.confirm){
           wx.request({
             url: 'http://' + app.globalData.serverIP + '/feedback/feedback/remove',
             method:'POST',
             data:{
-              ids: e.target.dataset.id,
+              ids: e.target.dataset.userFeedbackId,
             },
             header:{
               'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头

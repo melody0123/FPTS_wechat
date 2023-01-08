@@ -5,10 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    feedback:{},
+    todolist:{},
     touxiang: 'https://manager.diandianxc.com/diandianxc/mrtx.png',
     icon_r: 'https://manager.diandianxc.com/mine/enter.png',
-    
+    sex:[
+      {name:'0',value:'男',checked:'true'},
+      {name:'1',value:'女'}
+    ],
     isSex:"0",
     information:[],
     userSex:'',
@@ -45,7 +48,7 @@ Page({
   },
   //模态框确定
   modalConfirm() {
-    this.saveAdd();
+    this.saveEdit();
     wx.showToast({
       title: '提交成功',
       icon:'success'
@@ -54,28 +57,60 @@ Page({
       modalHidden: true
     })
     wx.navigateTo({
-      url: '/pages/feedback/feedback',
+      url: '/pages/todolist/todolist',
     })
   },
   onLoad: function (options) {
-    this.showFeedback();
-    console.log(this.feedback);
+    this.showTodolist();
+    console.log(this.todolist);
 
   },
 
-
-  saveAdd: function(){
+  showTodolist: function(){
+    var app = getApp();
+    var id = app.globalData.todolistId;
     var that=this;
+    wx.request({
+      url: 'http://' + app.globalData.serverIP + '/todo/list/wxEdit/' + id,
+      method:'POST',
+      data:{},
+      header:{
+        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
+        'cookie': wx.getStorageSync('sessionId')
+      },
+      success:function(res){ 
+        var todolist=res.data; 
+        if(todolist==null){ 
+          var toastText='获取数据失败';
+          wx.showToast({
+            title: toastText,
+            icon:'',
+            duration:2000 //弹出时间
+          })
+        }else{
+          that.setData({
+            todolist:todolist
+          })
+        }
+      }
+    })
+  },
+
+  saveEdit: function(){
+    var app = getApp();
+    var id = app.globalData.todolistId;
+    var that=this;
+    console.log(that.data.todolist);
     console.log(that.data.information);
     wx.request({
-      url: 'http://' + app.globalData.serverIP + '/feedback/feedback/add',
+      url: 'http://' + app.globalData.serverIP + '/todo/list/edit',
       method:'POST',
       data:{
-        userFeedbackContent:that.data.information.userFeedbackContent,
-        userFeedbackCreatetime:that.data.information.userFeedbackCreatetime,
-        completemark:0,
-        adminFeedbackContent:that.data.information.adminFeedbackContent,
-        userFeedbackId:that.data.information.userFeedbackId,
+        id:id,
+        task:that.data.information.task,
+        endTime:that.data.information.endTime,
+        state:that.data.todolist.state,
+        detail:that.data.information.detail,
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
@@ -84,9 +119,9 @@ Page({
       success:function(res){ 
         var result=res.data.msg;
         console.log(result); 
-        var toastText="新增成功"; 
+        var toastText="修改成功"; 
         if(result!= "操作成功"){
-          toastText = "新增失败";
+          toastText = "修改失败";
         }else{
           that.onLoad();
         }
