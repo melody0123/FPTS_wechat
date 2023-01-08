@@ -1,1 +1,99 @@
 /* pages/register/register.wxss */
+input
+{
+  height: 40px;
+  width: 70%;
+  margin: auto;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.validateCodeSection
+{
+  margin-bottom: 40px;
+  width: 750rpx; 
+  height: 97rpx; 
+  display: block; 
+  box-sizing: border-box;
+  position: relative; 
+  left: 0rpx; 
+  top: -50rpx;
+}
+
+.validateCodeSection image
+{
+  width: 80px; 
+  height: 40px; 
+  position: relative; 
+  left: 450rpx; 
+  top: -94rpx;
+  z-index: 2;
+}
+
+.section
+{
+  margin-bottom: 20px;
+  position: relative; 
+  left: 0rpx; 
+  top: -64rpx
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position:fixed; 
+  background-size:100% 100%;
+  z-index: -1;
+}
+
+.h1
+{
+  font-size: x-large;
+  color: white;
+  position: relative; 
+  left: 263rpx; 
+  top: 120rpx
+}
+
+.content
+{
+  width: 100%;
+  height: 100%;
+  position:fixed;
+}
+
+.registerBox
+{
+  position: relative; 
+  left: 0rpx; 
+  top: 258rpx
+}
+
+.registerButton
+{
+  width: 308rpx; 
+  height: 94rpx; 
+  display: block; 
+  box-sizing: border-box; 
+  position: relative; 
+  left: -2rpx; 
+  top: 0rpx;
+  color: white;
+  background-color: rgb(0, 187, 0);
+}
+
+.provision
+{
+  color: white;
+  position: relative; 
+  left: 135rpx; 
+  top: -66rpx
+}
+
+.provisionLink
+{
+  color: rgb(255, 196, 0);
+  position: relative; 
+  left: 139rpx; 
+  top: -64rpx;
+}

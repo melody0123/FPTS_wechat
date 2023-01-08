@@ -4,7 +4,7 @@
   <text class="h1">用户登录</text>
   <form class="loginBox" bindsubmit="loginFun">
     <view class="section">
-        <input name="username" placeholder="请输入账号" value="admin" placeholder-style="color: white"/>
+        <input name="username" placeholder="请输入用户名" value="admin" placeholder-style="color: white"/>
     </view>
     <view class="section">
         <input name="password" password="true" placeholder="请输入密码" value="admin123" placeholder-style="color: white"/>
