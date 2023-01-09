@@ -8,7 +8,7 @@ Page({
   data: {
     newPassword:'',
     confirmNewPassword:'', 
-    validateCode:'',
+    token:'',
     imgUrl: ''
   },
 
@@ -18,9 +18,9 @@ Page({
     // 读取一边用户输入的数据
     this.data.newPassword = e.detail.value.newPassword;
     this.data.confirmNewPassword = e.detail.value.confirmNewPassword;
-    this.data.validateCode = e.detail.value.validateCode;
+    this.data.token = e.detail.value.validateCode;
     // 检查所有字段是否填写完毕
-    if(!this.data.newPassword || !this.data.confirmNewPassword || !this.data.validateCode) {
+    if(!this.data.newPassword || !this.data.confirmNewPassword || !this.data.token) {
       // 没有填写完整
       wx.showToast({
         title: '信息不完整',
@@ -31,8 +31,8 @@ Page({
       // 填写完整，向服务器发送重置请求
       let that = this;
       wx.request({
-        url: 'http://' + app.globalData.serverIP + '/resetPassword', //请求地址
-        data: {newPassword: that.data.newPassword, validateCode: that.data.validateCode}, //请求数据
+        url: 'http://' + app.globalData.serverIP + '/resetPassword/setNewPassword', //请求地址
+        data: {newPassword: that.data.newPassword, token: that.data.token}, //请求数据
         method: 'POST', //请求方法
         header: {
           'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
@@ -49,7 +49,7 @@ Page({
               content: '即将前往登录页面',
               showCancel: false,
               complete: (res) => {
-                wx.switchTab({
+                wx.navigateTo({
                   url: '/pages/login/login',
                 })
               }

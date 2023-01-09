@@ -34,8 +34,8 @@ Page({
       // 填写完整，向服务器发送重置请求
       let that = this;
       wx.request({
-        url: 'http://' + app.globalData.serverIP + '/resetPasswordRequest', //请求地址
-        data: {mailAddress: that.data.mailAddress, validateCode: that.data.validateCode}, //请求数据
+        url: 'http://' + app.globalData.serverIP + '/resetPassword/sendCode', //请求地址
+        data: {email: that.data.mailAddress, validateCode: that.data.validateCode}, //请求数据
         method: 'POST', //请求方法
         header: {
           'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头
@@ -52,8 +52,8 @@ Page({
               content: '即将前往重置页面',
               showCancel: false,
               complete: (res) => {
-                wx.switchTab({
-                  url: '/pages/setNewPassword/setNewPassword',
+                wx.navigateTo({
+                  url: '/pages/resetPassword/setNewPassword',
                 })
               }
             });
