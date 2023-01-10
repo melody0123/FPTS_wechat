@@ -27,6 +27,12 @@ Page({
         icon:'error',
         duration: 2000
       })
+    } else if (this.data.newPassword != this.data.confirmNewPassword) {
+      wx.showToast({
+        title: '密码输入不一致',
+        icon:'error',
+        duration: 2000
+      })
     } else {
       // 填写完整，向服务器发送重置请求
       let that = this;
