@@ -75,7 +75,7 @@ Page({
         userFeedbackCreatetime:that.data.information.userFeedbackCreatetime,
         completemark:0,
         adminFeedbackContent:that.data.information.adminFeedbackContent,
-        userFeedbackId:that.data.information.userFeedbackId,
+        userId:that.data.information.userId,
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头

@@ -13,9 +13,13 @@
  
   <view class='name'>
     <text>时间</text>
-    <input name="userFeedbackCreatetime" type='text' placeholder-style='font-size:28rpx;' placeholder='请输入日期' value = '{{feedback.userFeedbackCreatetime}}'></input>
+    <input name="userFeedbackCreatetime" type='date' placeholder-style='font-size:28rpx;' placeholder='请输入日期' value = '{{feedback.userFeedbackCreatetime}}'></input>
   </view>
  
+  <view class='name'>
+    <text>用户ID</text>
+    <input name="userId" type='integer' placeholder-style='font-size:28rpx;' placeholder='请输入用户ID' value = '{{feedback.userId}}'></input>
+  </view>
 </view>
  
 <button form-type='submit'>提交</button>
@@ -25,6 +29,7 @@
 <modal class="modal" title='要提交的信息' hidden="{{modalHidden}}" bindcancel='modalCancel' bindconfirm='modalConfirm'>
     <view>反馈信息:{{information.userFeedbackContent}}</view>
     <view>日期:{{information.userFeedbackCreatetime}}</view>
+    <view>ID:{{information.userId}}</view>
 </modal>
 <!-- /模态框 -->
 

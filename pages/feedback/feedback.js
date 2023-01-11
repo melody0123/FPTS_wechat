@@ -73,7 +73,7 @@ Page({
     var that=this;
     wx.showModal({
       title: '提示',
-      content: '确定要删除[' + e.target.dataset.userFeedbackId +']吗？',
+      content: '确定要删除[' + e.target.dataset.userFeedbackContent +']吗？',
       success:function(sm){ 
         if(sm.confirm){
           wx.request({
