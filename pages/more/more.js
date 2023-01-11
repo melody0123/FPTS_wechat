@@ -1,8 +1,16 @@
 var util = require('../../utils/util.js');
 var app = getApp();
 import { btoa } from '../../utils/imageUtils.js';
-const arrayBufferToBase64Img = (buffer) => {
-  const str = String.fromCharCode(...new Uint8Array(buffer));
+const arrayBufferToBase64Img = (arrayBuffer) => {
+  let str = '';
+  const chunk = 8 * 1024;
+  let typedArray = new Uint8Array(arrayBuffer);
+  let i = 0;
+  for (; i < typedArray.length / chunk; i++) {
+    str += String.fromCharCode(...typedArray.slice(i * chunk, (i + 1) * chunk));
+  }
+  str += String.fromCharCode(...typedArray.slice(i * chunk));
+
   return `data:image/jpeg;base64,${btoa(str)}`;
 }
 
@@ -129,44 +137,60 @@ Page({
   onLoad: function () {
     console.log('onLoad')
     let that = this;
-
     // 尝试获取用户头像
-    wx.request({
-      url: 'http://' + app.globalData.serverIP + '/img/profile.jpg',
-      method: "GET",
-      responseType: 'arraybuffer',
-      header: {
-        cookie: wx.getStorageSync('sessionId')
-      },
-      success: function(res) {
-        // 获取成功，显示头像图片
-        // console.log(res.data);
-        let avatar = arrayBufferToBase64Img(res.data);
-        that.setData({
-          avatarUrl: avatar,
-          show: true
-        })
-        // console.log(that.data.avatarUrl);
-      },
-      fail: function() {
-        // 获取失败，设置成默认的
-        app.getUserInfo(function(userInfo){
+    // console.log(app.globalData.sysUserInfo);
+    if (app.globalData.sysUserInfo != null) {
+      wx.request({
+        url: 'http://' + app.globalData.serverIP + app.globalData.sysUserInfo.avatar,
+        method: "GET",
+        responseType: 'arraybuffer',
+        header: {
+          cookie: wx.getStorageSync('sessionId')
+        },
+        success: function(res) {
+          // 获取成功，显示头像图片
+          // console.log(res.data);
+          let avatar = arrayBufferToBase64Img(res.data);
           that.setData({
-            avatarUrl: userInfo.avatarUrl
+            avatarUrl: avatar,
+            show: true
           })
-        });
-      }
-    });
-
-    // 获取用户loginName
-    let loginName = app.globalData.sysUserInfo.userName;
-    if (loginName) {
-      // 获取成功
-      this.setData({
-        nickName: loginName
+          // console.log(that.data.avatarUrl);
+        },
+        fail: function() {
+          // 获取失败，设置成默认的
+          app.getUserInfo(function(userInfo){
+            that.setData({
+              avatarUrl: userInfo.avatarUrl
+            })
+          });
+        }
       });
     } else {
-      // 获取失败
+      // 未登录或用户信息获取失败
+      app.getUserInfo(function(userInfo){
+        that.setData({
+          avatarUrl: userInfo.avatarUrl
+        })
+      });
+    }
+    
+    // 获取用户loginName
+    if (app.globalData.sysUserInfo != null) {
+      let loginName = app.globalData.sysUserInfo.userName;
+      if (loginName) {
+        // 获取成功
+        this.setData({
+          nickName: loginName
+        });
+      } else {
+        // 获取失败
+        this.setData({
+          nickName: '请登录'
+        });
+      }
+    } else {
+      // 没有登录或用户信息获取失败
       this.setData({
         nickName: '请登录'
       });

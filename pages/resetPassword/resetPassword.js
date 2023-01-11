@@ -1,8 +1,16 @@
 // pages/resetPassword/resetPassword.js
 var app = getApp();
 import { btoa } from '../../utils/imageUtils';
-const arrayBufferToBase64Img = (buffer) => {
-  const str = String.fromCharCode(...new Uint8Array(buffer));
+const arrayBufferToBase64Img = (arrayBuffer) => {
+  let str = '';
+  const chunk = 8 * 1024;
+  let typedArray = new Uint8Array(arrayBuffer);
+  let i = 0;
+  for (; i < typedArray.length / chunk; i++) {
+    str += String.fromCharCode(...typedArray.slice(i * chunk, (i + 1) * chunk));
+  }
+  str += String.fromCharCode(...typedArray.slice(i * chunk));
+
   return `data:image/jpeg;base64,${btoa(str)}`;
 }
 
