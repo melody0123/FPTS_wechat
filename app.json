@@ -32,7 +32,8 @@
     "pages/feedback/feedbackEdit",
     "pages/resetPassword/setNewPassword",
     "pages/forum/forum",
-    "pages/forum/forumAdd"
+    "pages/forum/forumAdd",
+    "pages/forum/forumEdit"
   ],
   "window": {
     "backgroundTextStyle": "light",
