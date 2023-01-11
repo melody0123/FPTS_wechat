@@ -5,7 +5,7 @@
   </view>
 </view>
 <scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-  <button type = "primary" bindtap='warehouseAdd'>发贴</button>
+  <button type = "primary" bindtap='forumAdd'>发贴</button>
   <view class="table">
     <view class="tr bg-w">
       <view class="th">产品代码</view>
@@ -18,17 +18,17 @@
         <view class="td" data-id='{{item.productId}}'>{{item.productId}}</view>
         <view class="td">{{item.name}}</view>
         <view class="td">{{item.content}}</view>
-        <!-- <view class="td">
-          <button type="primary" size="mini" bindtap='forumEdit' data-id='{{item.id}}' data-pId='{{item.productId}}'>修改</button>
+        <view class="td">
+          <!-- <button type="primary" size="mini" bindtap='forumEdit' data-id='{{item.id}}' data-pId='{{item.productId}}'>修改</button> -->
           <button type="warn" size="mini" bindtap='forumDelete' data-id='{{item.id}}' data-name='{{item.name}}'>删除</button>
-        </view> -->
+        </view>
       </view>
       <view class="tr" wx:else>
         <view class="td">{{item.productId}}</view>
         <view class="td">{{item.name}}</view>
         <view class="td">{{item.content}}</view>
         <view class="td">
-          <button type="primary" size="mini" bindtap='forumEdit' data-id='{{item.id}}' data-pId='{{item.productId}}'>修改</button>
+          <!-- <button type="primary" size="mini" bindtap='forumEdit' data-id='{{item.id}}' data-pId='{{item.productId}}'>修改</button> -->
           <button type="warn" size="mini" bindtap='forumDelete' data-id='{{item.id}}' data-name='{{item.name}}'>删除</button>
         </view>
       </view>
