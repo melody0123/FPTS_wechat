@@ -19,6 +19,7 @@ Page({
   // 提交重置密码申请
   submitResetRequest: function(e) {
     // console.log(e.detail.value);
+    let that = this;
     // 读取一边用户输入的数据
     this.data.mailAddress = e.detail.value.mailAddress;
     this.data.validateCode = e.detail.value.validateCode;
@@ -32,7 +33,6 @@ Page({
       })
     } else {
       // 填写完整，向服务器发送重置请求
-      let that = this;
       wx.request({
         url: 'http://' + app.globalData.serverIP + '/resetPassword/sendCode', //请求地址
         data: {email: that.data.mailAddress, validateCode: that.data.validateCode}, //请求数据
@@ -64,10 +64,11 @@ Page({
               title: '操作失败',
               content: res.data.msg + '，请重试',
               showCancel: false,
-              complete: (res) => {
-                wx.reLaunch({
-                  url: '/pages/resetPassword/resetPassword',
-                })
+              complete: function() {
+                that.refreshValidateCode();
+                that.setData({
+                  validateCode: ''
+                });
               }
             })
           }
@@ -79,15 +80,24 @@ Page({
             title: '操作失败',
             content: '网络错误，请重试',
             showCancel: false,
-            complete: (res) => {
-              wx.reLaunch({
-                url: '/pages/resetPassword/resetPassword',
-              })
+            complete: function() {
+              that.refreshValidateCode();
+              that.setData({
+                validateCode: ''
+              });
             }
           })
         }
       })
     }
+  },
+
+  // 监听验证码输入框
+  getChar: function(e) {
+    // console.log(e.detail.value);
+    this.setData({
+      validateCode:e.detail.value
+    });
   },
   
   // 跳转到注册页面

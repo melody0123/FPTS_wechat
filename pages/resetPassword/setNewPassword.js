@@ -66,12 +66,7 @@ Page({
             wx.showModal({
               title: '操作失败',
               content: res.data.msg + '，请重试',
-              showCancel: false,
-              complete: (res) => {
-                wx.reLaunch({
-                  url: '/pages/resetPassword/resetPassword',
-                })
-              }
+              showCancel: false
             })
           }
         },
@@ -81,12 +76,7 @@ Page({
           wx.showModal({
             title: '操作失败',
             content: '网络错误，请重试',
-            showCancel: false,
-            complete: (res) => {
-              wx.reLaunch({
-                url: '/pages/resetPassword/resetPassword',
-              })
-            }
+            showCancel: false
           })
         }
       })
