@@ -114,6 +114,17 @@ Page({
       })
     }
   },
+  forumFunc: function () {
+    if (0) {
+      wx.switchTab({
+        url: '/pages/forum/forum',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/forum/forum',
+      })
+    }
+  },
 
   onLoad: function () {
     console.log('onLoad')
