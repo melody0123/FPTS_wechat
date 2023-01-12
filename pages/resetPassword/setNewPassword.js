@@ -27,6 +27,13 @@ Page({
         icon:'error',
         duration: 2000
       })
+    } else if (this.data.newPassword.length < 5) {
+      // 密码不符合要求
+      wx.showToast({
+        title: '密码不足5位',
+        icon:'error',
+        duration: 2000
+      })
     } else if (this.data.newPassword != this.data.confirmNewPassword) {
       wx.showToast({
         title: '密码输入不一致',

@@ -138,7 +138,7 @@ Page({
     console.log('onLoad')
     let that = this;
     // 尝试获取用户头像
-    console.log(app.globalData.sysUserInfo);
+    // console.log(app.globalData.sysUserInfo);
     if (app.globalData.sysUserInfo != null && app.globalData.sysUserInfo.avatar != "") {
       wx.request({
         url: 'http://' + app.globalData.serverIP + app.globalData.sysUserInfo.avatar,
@@ -182,7 +182,7 @@ Page({
         }
       });
     } else if (app.globalData.sysUserInfo != null && app.globalData.sysUserInfo.avatar == "") {
-      console.log("here!")
+      // console.log("here!")
       // 信息获取成功但是用户没有设置头像
       wx.request({
         url: 'http://' + app.globalData.serverIP + '/img/profile.jpg',
