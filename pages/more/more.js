@@ -138,7 +138,7 @@ Page({
     console.log('onLoad')
     let that = this;
     // 尝试获取用户头像
-    // console.log(app.globalData.sysUserInfo);
+    console.log(app.globalData.sysUserInfo);
     if (app.globalData.sysUserInfo != null && app.globalData.sysUserInfo.avatar != "") {
       wx.request({
         url: 'http://' + app.globalData.serverIP + app.globalData.sysUserInfo.avatar,
@@ -181,6 +181,27 @@ Page({
           // console.log(that.data.avatarUrl);
         }
       });
+    } else if (app.globalData.sysUserInfo != null && app.globalData.sysUserInfo.avatar == "") {
+      console.log("here!")
+      // 信息获取成功但是用户没有设置头像
+      wx.request({
+        url: 'http://' + app.globalData.serverIP + '/img/profile.jpg',
+        method: "GET",
+        responseType: 'arraybuffer',
+        header: {
+          cookie: wx.getStorageSync('sessionId')
+        },
+        success: function(res) {
+          // 显示默认头像图片
+          // console.log(res.data);
+          let avatar = arrayBufferToBase64Img(res.data);
+          that.setData({
+            avatarUrl: avatar,
+            show: true
+          })
+          // console.log(that.data.avatarUrl);
+        }
+      })
     } else {
       // 未登录或用户信息获取失败
       app.getUserInfo(function(userInfo){

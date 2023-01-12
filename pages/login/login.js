@@ -81,6 +81,7 @@ Page({
               },
               success: function(res) {
                 app.globalData.sysUserInfo = res.data; // 存入全局变量
+                // console.log(app.globalData.sysUserInfo);
               }
             });
           } else if (res.statusCode == 200 && res.data.code == 500) {
