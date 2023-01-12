@@ -7,7 +7,7 @@
         <input name="username" placeholder="请输入用户名" value="admin" placeholder-style="color: white"/>
     </view>
     <view class="section">
-        <input name="password" password="true" placeholder="请输入密码" value="admin123" placeholder-style="color: white"/>
+        <input name="password" password="true" placeholder="请输入密码" value="admin123456" placeholder-style="color: white"/>
     </view>
     <view class="validateCodeSection">
         <input name="validateCode" placeholder="请输入验证码" placeholder-style="color: white"/>
