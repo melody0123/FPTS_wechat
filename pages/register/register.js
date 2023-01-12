@@ -21,6 +21,7 @@ Page({
     loginName:'',
     password:'', 
     validateCode:'',
+    token:'',
     isChecked: false,
     imgUrl: ''
   },
@@ -53,8 +54,9 @@ Page({
     this.data.loginName = e.detail.value.loginName;
     this.data.password = e.detail.value.password;
     this.data.validateCode = e.detail.value.validateCode;
+    this.data.token = e.detail.value.token;
     // 检查所有登录用的字段是否填写完毕
-    if(!this.data.loginName || !this.data.password || !this.data.validateCode) {
+    if(!this.data.loginName || !this.data.password || !this.data.validateCode || !this.data.token) {
       // 没有填写完整
       wx.showToast({
         title: '信息不完整',
@@ -83,7 +85,12 @@ Page({
       let that = this;
       wx.request({
         url: 'http://' + app.globalData.serverIP + '/register', //请求地址
-        data: {loginName: that.data.loginName, password: that.data.password, validateCode: that.data.validateCode}, //请求数据
+        data: {
+          loginName: that.data.loginName, 
+          password: that.data.password, 
+          validateCode: that.data.validateCode, 
+          token: that.data.token
+        }, //请求数据
         method: 'POST', //请求方法
         header: {
           'content-type': 'application/x-www-form-urlencoded;charset=UTF-8', // 请求头

@@ -4,6 +4,9 @@
   <text class="h1">用户注册</text>
   <form class="registerBox" bindsubmit="registerFun">
     <view class="section">
+        <input name="token" placeholder="请输入注册令牌" placeholder-style="color: white"/>
+    </view>
+    <view class="section">
         <input name="loginName" placeholder="请输入用户名" placeholder-style="color: white"/>
     </view>
     <view class="section">
