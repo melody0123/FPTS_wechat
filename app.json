@@ -33,7 +33,8 @@
     "pages/resetPassword/setNewPassword",
     "pages/forum/forum",
     "pages/forum/forumAdd",
-    "pages/forum/forumEdit"
+    "pages/forum/forumEdit",
+    "pages/register/getRegisterToken"
   ],
   "window": {
     "backgroundTextStyle": "light",
