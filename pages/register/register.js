@@ -119,10 +119,11 @@ Page({
               title: '注册失败',
               content: res.data.msg + '，请重试',
               showCancel: false,
-              complete: (res) => {
-                wx.reLaunch({
-                  url: '/pages/register/register',
-                })
+              complete: function() {
+                that.refreshValidateCode();
+                that.setData({
+                  validateCode: ''
+                });
               }
             })
           }
@@ -134,15 +135,24 @@ Page({
             title: '登录失败',
             content: '网络错误，请重试',
             showCancel: false,
-            complete: (res) => {
-              wx.reLaunch({
-                url: '/pages/register/register',
-              })
+            complete: function() {
+              that.refreshValidateCode();
+              that.setData({
+                validateCode: ''
+              });
             }
           })
         }
       })
     }
+  },
+
+  // 监听验证码输入框
+  getChar: function(e) {
+    // console.log(e.detail.value);
+    this.setData({
+      validateCode:e.detail.value
+    });
   },
 
   // 刷新验证码
